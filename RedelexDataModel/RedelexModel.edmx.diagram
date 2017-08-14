@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2fdf47c173c9431ca06ada279aecda87" Name="Diagram1" >
+        <EntityTypeShape EntityType="RedelexModel.Procesos" Width="1.5" PointX="6" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RedelexModel.Usuarios" Width="1.5" PointX="10.25" PointY="2.5" />
+        <AssociationConnector Association="RedelexModel.UsuariosProcesos" />
+        <AssociationConnector Association="RedelexModel.UsuariosProcesos1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

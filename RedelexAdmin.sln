@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedelexAdmin", "RedelexAdmin\RedelexAdmin.csproj", "{F74F933B-C3FF-4D3C-B4F5-E41369EB1823}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedelexDataModel", "RedelexDataModel\RedelexDataModel.csproj", "{F644F2F5-8437-4E10-8E48-7B2B8A859195}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedelexBLL", "RedelexBLL\RedelexBLL.csproj", "{AB008798-2FB8-42EC-AECD-51310603E1BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedelexDTO", "RedelexDTO\RedelexDTO.csproj", "{7CB3BA98-CA96-4F09-927C-37F2AF67C817}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F74F933B-C3FF-4D3C-B4F5-E41369EB1823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F74F933B-C3FF-4D3C-B4F5-E41369EB1823}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F74F933B-C3FF-4D3C-B4F5-E41369EB1823}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F74F933B-C3FF-4D3C-B4F5-E41369EB1823}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F644F2F5-8437-4E10-8E48-7B2B8A859195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F644F2F5-8437-4E10-8E48-7B2B8A859195}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F644F2F5-8437-4E10-8E48-7B2B8A859195}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F644F2F5-8437-4E10-8E48-7B2B8A859195}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB008798-2FB8-42EC-AECD-51310603E1BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB008798-2FB8-42EC-AECD-51310603E1BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB008798-2FB8-42EC-AECD-51310603E1BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB008798-2FB8-42EC-AECD-51310603E1BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CB3BA98-CA96-4F09-927C-37F2AF67C817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CB3BA98-CA96-4F09-927C-37F2AF67C817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CB3BA98-CA96-4F09-927C-37F2AF67C817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CB3BA98-CA96-4F09-927C-37F2AF67C817}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

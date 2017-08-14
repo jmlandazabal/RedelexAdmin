@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RedelexSGPEntModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="direccion_notificacion" Type="varchar" MaxLength="7500" />
+          <Property Name="maximo_procesos" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="fecha_expiracion" Type="smalldatetime" />
+          <Property Name="columna_abogado" Type="varchar" MaxLength="50" />
+          <Property Name="nivel" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="columna_busqueda" Type="varchar" MaxLength="50" />
+          <Property Name="maximo_usuarios" Type="int" Nullable="false" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+          <Property Name="maximo_espacio_disco" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="license_key" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="100" />
+          <Property Name="direccion" Type="varchar" MaxLength="255" />
+          <Property Name="ciudad" Type="varchar" MaxLength="100" />
+          <Property Name="pais" Type="varchar" MaxLength="100" />
+          <Property Name="fecha_creacion" Type="smalldatetime" />
+          <Property Name="logo" Type="varchar" MaxLength="255" />
+          <Property Name="VJConnectMaximoProcesos" Type="int" Nullable="false" />
+          <Property Name="RepositorioDocumentos" Type="varchar" MaxLength="255" />
+          <Property Name="PaisId" Type="int" Nullable="false" />
+          <Property Name="CodigoAlternoConsecutivo" Type="int" Nullable="false" />
+          <Property Name="TipoLicenciaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="RedelexSGPEntModelStoreContainer">
+          <EntitySet Name="clientes" EntityType="Self.clientes" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RedelexSGPEntModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_notificacion" Type="String" MaxLength="7500" FixedLength="false" Unicode="false" />
+          <Property Name="maximo_procesos" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="fecha_expiracion" Type="DateTime" Precision="0" />
+          <Property Name="columna_abogado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nivel" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="columna_busqueda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="maximo_usuarios" Type="Int32" Nullable="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <Property Name="maximo_espacio_disco" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="license_key" Type="Guid" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ciudad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="pais" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+          <Property Name="logo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="VJConnectMaximoProcesos" Type="Int32" Nullable="false" />
+          <Property Name="RepositorioDocumentos" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PaisId" Type="Int32" Nullable="false" />
+          <Property Name="CodigoAlternoConsecutivo" Type="Int32" Nullable="false" />
+          <Property Name="TipoLicenciaId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="RedelexDBModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="clientes" EntityType="Self.clientes" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RedelexSGPEntModelStoreContainer" CdmEntityContainer="RedelexDBModel">
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="RedelexSGPEntModel.clientes">
+              <MappingFragment StoreEntitySet="clientes">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="direccion_notificacion" ColumnName="direccion_notificacion" />
+                <ScalarProperty Name="maximo_procesos" ColumnName="maximo_procesos" />
+                <ScalarProperty Name="fecha_expiracion" ColumnName="fecha_expiracion" />
+                <ScalarProperty Name="columna_abogado" ColumnName="columna_abogado" />
+                <ScalarProperty Name="nivel" ColumnName="nivel" />
+                <ScalarProperty Name="columna_busqueda" ColumnName="columna_busqueda" />
+                <ScalarProperty Name="maximo_usuarios" ColumnName="maximo_usuarios" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="maximo_espacio_disco" ColumnName="maximo_espacio_disco" />
+                <ScalarProperty Name="license_key" ColumnName="license_key" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="pais" ColumnName="pais" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="VJConnectMaximoProcesos" ColumnName="VJConnectMaximoProcesos" />
+                <ScalarProperty Name="RepositorioDocumentos" ColumnName="RepositorioDocumentos" />
+                <ScalarProperty Name="PaisId" ColumnName="PaisId" />
+                <ScalarProperty Name="CodigoAlternoConsecutivo" ColumnName="CodigoAlternoConsecutivo" />
+                <ScalarProperty Name="TipoLicenciaId" ColumnName="TipoLicenciaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

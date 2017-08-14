@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RedelexSGPEntModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="abogados">
+          <Key>
+            <PropertyRef Name="id_abogado" />
+          </Key>
+          <Property Name="abogado" Type="varchar" MaxLength="50" />
+          <Property Name="nombre1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nombre2" Type="varchar" MaxLength="100" />
+          <Property Name="apellido1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="apellido2" Type="varchar" MaxLength="100" />
+          <Property Name="cedula" Type="varchar" MaxLength="30" />
+          <Property Name="especialidad" Type="varchar" MaxLength="100" />
+          <Property Name="tipo_vinculacion" Type="int" />
+          <Property Name="fecha_contrato" Type="smalldatetime" />
+          <Property Name="direccion_residencia" Type="varchar" MaxLength="255" />
+          <Property Name="telefono_residencia" Type="varchar" MaxLength="50" />
+          <Property Name="direccion_oficina" Type="varchar" MaxLength="255" />
+          <Property Name="telefono_oficina" Type="varchar" MaxLength="50" />
+          <Property Name="departamento" Type="int" />
+          <Property Name="ciudad" Type="int" Nullable="false" />
+          <Property Name="apartado_aereo" Type="varchar" MaxLength="10" />
+          <Property Name="total_casos" Type="int" />
+          <Property Name="regional" Type="int" />
+          <Property Name="observacion" Type="varchar" MaxLength="200" />
+          <Property Name="fecha_actualizacion" Type="smalldatetime" />
+          <Property Name="tarjeta" Type="varchar" MaxLength="30" />
+          <Property Name="tipo_regimen" Type="smallint" />
+          <Property Name="correo" Type="varchar" MaxLength="100" />
+          <Property Name="nombre" Type="varchar" MaxLength="403" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="tipo_abogado" Type="varchar" MaxLength="15" />
+          <Property Name="eliminado" Type="bit" Nullable="false" />
+          <Property Name="id_abogado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_cuenta" Type="varchar" MaxLength="50" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+          <Property Name="telefono_celular" Type="varchar" MaxLength="100" />
+          <Property Name="usuario_asociado" Type="int" />
+        </EntityType>
+        <EntityContainer Name="RedelexSGPEntModelStoreContainer">
+          <EntitySet Name="abogados" EntityType="Self.abogados" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RedelexSGPEntModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="abogados">
+          <Key>
+            <PropertyRef Name="id_abogado" />
+          </Key>
+          <Property Name="abogado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="apellido1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_vinculacion" Type="Int32" />
+          <Property Name="fecha_contrato" Type="DateTime" Precision="0" />
+          <Property Name="direccion_residencia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="telefono_residencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_oficina" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="telefono_oficina" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="departamento" Type="Int32" />
+          <Property Name="ciudad" Type="Int32" Nullable="false" />
+          <Property Name="apartado_aereo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="total_casos" Type="Int32" />
+          <Property Name="regional" Type="Int32" />
+          <Property Name="observacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_actualizacion" Type="DateTime" Precision="0" />
+          <Property Name="tarjeta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_regimen" Type="Int16" />
+          <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="403" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="tipo_abogado" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="id_abogado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <Property Name="telefono_celular" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="usuario_asociado" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="RedelexDBModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="abogados" EntityType="Self.abogados" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RedelexSGPEntModelStoreContainer" CdmEntityContainer="RedelexDBModel">
+          <EntitySetMapping Name="abogados">
+            <EntityTypeMapping TypeName="RedelexSGPEntModel.abogados">
+              <MappingFragment StoreEntitySet="abogados">
+                <ScalarProperty Name="abogado" ColumnName="abogado" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="nombre2" ColumnName="nombre2" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+                <ScalarProperty Name="tipo_vinculacion" ColumnName="tipo_vinculacion" />
+                <ScalarProperty Name="fecha_contrato" ColumnName="fecha_contrato" />
+                <ScalarProperty Name="direccion_residencia" ColumnName="direccion_residencia" />
+                <ScalarProperty Name="telefono_residencia" ColumnName="telefono_residencia" />
+                <ScalarProperty Name="direccion_oficina" ColumnName="direccion_oficina" />
+                <ScalarProperty Name="telefono_oficina" ColumnName="telefono_oficina" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="apartado_aereo" ColumnName="apartado_aereo" />
+                <ScalarProperty Name="total_casos" ColumnName="total_casos" />
+                <ScalarProperty Name="regional" ColumnName="regional" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="fecha_actualizacion" ColumnName="fecha_actualizacion" />
+                <ScalarProperty Name="tarjeta" ColumnName="tarjeta" />
+                <ScalarProperty Name="tipo_regimen" ColumnName="tipo_regimen" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipo_abogado" ColumnName="tipo_abogado" />
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+                <ScalarProperty Name="id_abogado" ColumnName="id_abogado" />
+                <ScalarProperty Name="id_cuenta" ColumnName="id_cuenta" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="telefono_celular" ColumnName="telefono_celular" />
+                <ScalarProperty Name="usuario_asociado" ColumnName="usuario_asociado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

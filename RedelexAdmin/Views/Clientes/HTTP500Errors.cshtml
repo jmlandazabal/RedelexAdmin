@@ -1,0 +1,146 @@
+﻿@model IEnumerable<RedelexDTO.HTTP500Errors>
+
+@{
+    Layout = null;
+}
+
+
+
+<h4 class="card-title">Reporte de Movimientos</h4>
+<h6 class="card-subtitle">Ultimos 30 días</h6>
+<div class="table-responsive m-t-40">
+    <div class="dataTables_wrapper no-footer">
+
+
+
+
+        <table id="LogErroresTable" class="table display table-bordered table-striped data-table" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaHoraString)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Url)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AspLine)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ErrDesc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AspDesc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AspNumber)
+                </th>
+                
+                <th>
+                    @Html.DisplayNameFor(model => model.AspColumn)
+                </th>
+                
+                <th>
+                    @Html.DisplayNameFor(model => model.ErrNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ref)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ip)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ua)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Method)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CuentaId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UsuarioId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UsuarioNombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CuentaNombre)
+                </th>
+
+            </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaHoraString)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Url)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AspLine)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ErrDesc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AspDesc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AspNumber)
+                    </td>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AspColumn)
+                    </td>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ErrNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ref)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ip)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ua)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Method)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CuentaId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UsuarioId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UsuarioNombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CuentaNombre)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+
+<script>
+    $('#LogErroresTable').DataTable({
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        "pageLength": 50
+    });
+</script>

@@ -1,0 +1,140 @@
+﻿@model RedelexDTO.Estadisticas
+
+@{
+    Layout = null;
+}
+
+<script>
+    var labels = [];
+    var series = [];
+    var series1 = [];
+
+
+</script>
+
+<style>
+        .ct-series-b .ct-bar, .ct-series-b .ct-line, .ct-series-b .ct-point, .ct-series-b .ct-slice-donut {
+             stroke: goldenrod;
+        }
+</style>
+
+<div class="card">
+                            <div class="card-block">
+                                <div class="d-flex">
+                                    <div class="m-r-20 align-self-center">
+                                        <h1 class="text-white"><i class="ti-pie-chart"></i></h1></div>
+                                    <div>
+                                        <h3 class="card-title">@ViewBag.ClaseEstadistica</h3>
+                                        <h6 class="card-subtitle">Fechas: De @ViewBag.FechaInicial a @ViewBag.FechaFinal</h6> </div>
+                                </div>
+                                <div class="row">
+                                    
+                                    <div class="col-12 align-self-center">
+                                        @if (ViewBag.ClaseEstadistica.Contains("Cuenta")){
+                                            <div id="@ViewBag.ClaseEstadistica-graph" class="download-state chartist-chart" style="height: @(Model.Estadistica.Count()*25)px;" ></div>
+                                            <div class="align-self-center">
+                                            
+                                                <div class="table-responsive">
+                                                <table class="table color-table success-table">
+                                                    <tr>
+                                                        <th>
+                                                            Cuenta
+                                                        </th>
+                                                        <th>
+                                                            Total
+                                                        </th>
+                                                    </tr>
+
+                                                    @foreach (var item in Model.Estadistica.OrderByDescending(a=>a.Total)) {
+                                                    <tr>
+                                                        <td>
+                                                            @item.CuentaNombre
+                                                        </td>
+                                                    
+                                                        <td>
+                                                            @item.Total
+                                                        </td>
+                                                    </tr>
+                                                        <script>labels.push('@if (item.CuentaNombre.Length <= 6){ @item.CuentaNombre.ToUpper() }else{ @item.CuentaNombre.Substring(0, 6).ToUpper()}'); series1.push('@item.Total');</script>
+                                                    }
+
+                                                </table>
+                                                </div> 
+                                            </div>
+                                        }
+                                        @if (!ViewBag.ClaseEstadistica.Contains("Cuenta")){
+                                            
+                                                  
+                                            <div id="@ViewBag.ClaseEstadistica-graph" class="total-revenue4" style="height: 350px; stroke: #009efb;"></div>
+                                            
+
+                                                foreach (var item in Model.Estadistica.OrderBy(a=>a.Fecha)) {
+                                                
+                                                    <script>labels.push('@item.FechaDiaSemanaString.Substring(0,2).ToUpper()'); series1.push('@item.Total');</script>
+                                                }
+                                            
+                                        }
+                                      </div>  
+                                </div>
+                            </div>
+                        </div>
+
+<script>
+
+    $(function () {
+        "use strict";
+        // ============================================================== 
+        // Total revenue chart
+        // ============================================================== 
+        series.push(series1);
+        //console.log(labelsA);
+        //console.log(seriesA);
+
+        
+
+        if ('@ViewBag.ClaseEstadistica'.indexOf('Cuenta')==-1) {
+            new Chartist.Line('#@ViewBag.ClaseEstadistica-graph', {
+                labels: labels
+                , series: series
+            }, {
+                //high: 15
+                //, low: 0
+                showArea: true
+                , fullWidth: true
+                , plugins: [
+                Chartist.plugins.tooltip()
+                ] // As this is axis specific we need to tell Chartist to use whole numbers only on the concerned axis
+                //, axisY: {
+                //    onlyInteger: true
+                //    , offset: 20
+                //    , labelInterpolationFnc: function (value) {
+                //        return (value / 1) + 'k';
+                //    }
+                //}
+            });
+        }
+
+        if ('@ViewBag.ClaseEstadistica'.indexOf('Cuenta') !== -1) {
+            new Chartist.Bar('#@ViewBag.ClaseEstadistica-graph', {
+                labels: labels,
+                series: series
+                
+            }, {
+                
+                seriesBarDistance: 70,
+                reverseData: true,
+                horizontalBars: true,
+                axisY: {
+                    offset: 70
+                }
+                , plugins: [
+                Chartist.plugins.tooltip(),
+                Chartist.plugins.ctPointLabels({
+                    textAnchor: 'middle'
+                })
+                ]
+            });
+        }
+
+    });
+</script>

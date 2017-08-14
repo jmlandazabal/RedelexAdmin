@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="38a16e77602045b694c556df670a1895" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="RedelexModel.abogados" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RedelexModel.acciones_usuarios" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RedelexModel.actuaciones_judiciales" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="RedelexModel.ActuacionesDS" Width="1.5" PointX="12.75" PointY="16.25" />
+        <EntityTypeShape EntityType="RedelexModel.Audit" Width="1.5" PointX="3.75" PointY="3.75" />
+        <EntityTypeShape EntityType="RedelexModel.auditoria_usuarios" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RedelexModel.AuditoriaDS" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="RedelexModel.clientes" Width="1.5" PointX="6" PointY="10.75" />
+        <EntityTypeShape EntityType="RedelexModel.grupos" Width="1.5" PointX="9" PointY="2.5" />
+        <EntityTypeShape EntityType="RedelexModel.grupos_cuentas" Width="1.5" PointX="11.25" PointY="12.875" />
+        <EntityTypeShape EntityType="RedelexModel.HTTP500Errors" Width="1.5" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="RedelexModel.procesos" Width="1.5" PointX="8.25" PointY="6.125" />
+        <EntityTypeShape EntityType="RedelexModel.ProcesosDS" Width="1.5" PointX="10.5" PointY="16" />
+        <EntityTypeShape EntityType="RedelexModel.ProcesosTYBA" Width="1.5" PointX="10.5" PointY="9" />
+        <EntityTypeShape EntityType="RedelexModel.Productos" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RedelexModel.tipo_estados" Width="1.5" PointX="6" PointY="7.625" />
+        <EntityTypeShape EntityType="RedelexModel.TipoLicencias" Width="1.5" PointX="3.75" PointY="12.875" />
+        <EntityTypeShape EntityType="RedelexModel.tokens" Width="1.5" PointX="13.75" PointY="11.75" />
+        <EntityTypeShape EntityType="RedelexModel.usuarios" Width="1.5" PointX="11.25" PointY="2.125" />
+        <EntityTypeShape EntityType="RedelexModel.usuarios_grupos" Width="1.5" PointX="14.75" PointY="4.75" />
+        <EntityTypeShape EntityType="RedelexModel.v_usuarios_cuentas" Width="1.5" PointX="14.75" PointY="14.75" />
+        <AssociationConnector Association="RedelexModel.FK_ActuacionesDS_ProcesosDS" />
+        <AssociationConnector Association="RedelexModel.FK_clientes_TipoLicencias" />
+        <AssociationConnector Association="RedelexModel.FK_grupos_cuentas_clientes" />
+        <AssociationConnector Association="RedelexModel.FK_procesos_clientes" />
+        <AssociationConnector Association="RedelexModel.FK_grupos_cuentas_grupos" />
+        <AssociationConnector Association="RedelexModel.FK_procesos_tipo_estados" />
+        <AssociationConnector Association="RedelexModel.FK_ProcesosDS_procesos" />
+        <AssociationConnector Association="RedelexModel.FK_ProcesosTYBA_procesos" />
+        <AssociationConnector Association="RedelexModel.grupos_definicion" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

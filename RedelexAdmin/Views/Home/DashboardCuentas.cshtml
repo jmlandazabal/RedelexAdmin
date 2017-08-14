@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "DashboardCuentas";
+    Layout = "~/Views/Shared/_LayoutMaterial.cshtml";
+}
+
+<!-- Row -->
+<div class="row">
+    <!-- Column -->
+    <div class="col-lg-6 col-md-6" id="TotalUsuariosActivos">
+        <!-- Ajax -->
+    </div>
+    <!-- Column -->
+    <!-- Column -->
+    <div class="col-lg-6 col-md-6" id="TotalProcesosConsultados">
+        <!-- Ajax-->
+    </div>
+    <!-- Column -->
+</div>
+<!-- Row -->
+<!-- Row -->
+<div class="row">
+    <!-- Column -->
+    <div class="col-lg-6 col-md-6" id="TotalProcesosConsultadosCuenta">
+        <!-- Ajax -->
+    </div>
+    <!-- Column -->
+    <!-- Column -->
+    <div class="col-lg-6 col-md-6" id="TotalProcesosCreadosCuenta">
+        <!-- Ajax-->
+    </div>
+    <!-- Column -->
+</div>
+<!-- Row -->
+
+<script>
+    url: "@Url.Content("~/Home/Estadisticas?ClaseEstadistica=TotalUsuariosActivos")",
+    $.ajax({
+        url: "@Url.Content("~/Home/Estadisticas?ClaseEstadistica=TotalUsuariosActivos")",
+        type: 'POST',
+        context: document.body,
+        beforeSend: function () {
+            $('#TotalUsuariosActivos').html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>');
+        },
+        success: function (response) {
+            $('#TotalUsuariosActivos').html(response);
+        }
+    });
+
+    $.ajax({
+        url: "@Url.Content("~/Home/Estadisticas?ClaseEstadistica=TotalProcesosConsultados")",
+        type: 'POST',
+        context: document.body,
+        beforeSend: function () {
+            $('#TotalProcesosConsultados').html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>');
+        },
+        success: function (response) {
+            $('#TotalProcesosConsultados').html(response);
+        }
+    });
+
+    $.ajax({
+        url: "@Url.Content("~/Home/Estadisticas?ClaseEstadistica=TotalProcesosConsultadosCuenta")",
+        type: 'POST',
+        context: document.body,
+        beforeSend: function () {
+            $('#TotalProcesosConsultadosCuenta').html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>');
+        },
+        success: function (response) {
+            $('#TotalProcesosConsultadosCuenta').html(response);
+        }
+    });
+
+    $.ajax({
+        url: "@Url.Content("~/Home/Estadisticas?ClaseEstadistica=TotalProcesosCreadosCuenta")",
+        type: 'POST',
+        context: document.body,
+        beforeSend: function () {
+            $('#TotalProcesosCreadosCuenta').html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>');
+        },
+        success: function (response) {
+            $('#TotalProcesosCreadosCuenta').html(response);
+        }
+    });
+
+</script>
+

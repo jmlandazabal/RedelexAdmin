@@ -1,0 +1,1693 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RedelexModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="abogados">
+          <Key>
+            <PropertyRef Name="id_abogado" />
+          </Key>
+          <Property Name="abogado" Type="varchar" MaxLength="50" />
+          <Property Name="nombre1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nombre2" Type="varchar" MaxLength="100" />
+          <Property Name="apellido1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="apellido2" Type="varchar" MaxLength="100" />
+          <Property Name="cedula" Type="varchar" MaxLength="30" />
+          <Property Name="especialidad" Type="varchar" MaxLength="100" />
+          <Property Name="tipo_vinculacion" Type="int" />
+          <Property Name="fecha_contrato" Type="smalldatetime" />
+          <Property Name="direccion_residencia" Type="varchar" MaxLength="255" />
+          <Property Name="telefono_residencia" Type="varchar" MaxLength="50" />
+          <Property Name="direccion_oficina" Type="varchar" MaxLength="255" />
+          <Property Name="telefono_oficina" Type="varchar" MaxLength="50" />
+          <Property Name="departamento" Type="int" />
+          <Property Name="ciudad" Type="int" Nullable="false" />
+          <Property Name="apartado_aereo" Type="varchar" MaxLength="10" />
+          <Property Name="total_casos" Type="int" />
+          <Property Name="regional" Type="int" />
+          <Property Name="observacion" Type="varchar" MaxLength="200" />
+          <Property Name="fecha_actualizacion" Type="smalldatetime" />
+          <Property Name="tarjeta" Type="varchar" MaxLength="30" />
+          <Property Name="tipo_regimen" Type="smallint" />
+          <Property Name="correo" Type="varchar" MaxLength="100" />
+          <Property Name="nombre" Type="varchar" MaxLength="403" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="tipo_abogado" Type="varchar" MaxLength="15" />
+          <Property Name="eliminado" Type="bit" Nullable="false" />
+          <Property Name="id_abogado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_cuenta" Type="varchar" MaxLength="50" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+          <Property Name="telefono_celular" Type="varchar" MaxLength="100" />
+          <Property Name="usuario_asociado" Type="int" />
+        </EntityType>
+        <EntityType Name="acciones_usuarios">
+          <Key>
+            <PropertyRef Name="codigo_accion" />
+          </Key>
+          <Property Name="codigo_accion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="actuaciones_judiciales">
+          <Key>
+            <PropertyRef Name="item" />
+          </Key>
+          <Property Name="item" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="obligacion" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="codigo_actuacion" Type="varchar" MaxLength="20" />
+          <Property Name="actuacion_padre" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="fecha_actuacion" Type="smalldatetime" Nullable="false" />
+          <Property Name="fecha_vencimiento" Type="datetime" />
+          <Property Name="observacion" Type="varchar" MaxLength="8000" />
+          <Property Name="usuario_insercion" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_insercion" Type="datetime" />
+          <Property Name="fecha_modificacion" Type="datetime" />
+          <Property Name="aprobado" Type="char" MaxLength="1" />
+          <Property Name="aprobado_por" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_aprobacion" Type="datetime" />
+          <Property Name="clase_actuacion" Type="char" MaxLength="1" />
+          <Property Name="eliminado" Type="bit" />
+          <Property Name="tipo_actuacion" Type="int" />
+          <Property Name="tipo_etapa" Type="int" />
+          <Property Name="hora_actuacion" Type="varchar" MaxLength="8" />
+          <Property Name="hora_vencimiento" Type="varchar" MaxLength="8" />
+          <Property Name="ejecutado" Type="int" />
+          <Property Name="responsable" Type="int" />
+          <Property Name="VersionNo" Type="int" />
+        </EntityType>
+        <EntityType Name="ActuacionesDS">
+          <Key>
+            <PropertyRef Name="IdActuacion" />
+          </Key>
+          <Property Name="IdActuacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProceso" Type="int" Nullable="false" />
+          <Property Name="FechaAct" Type="varchar" MaxLength="15" />
+          <Property Name="Actuacion" Type="varchar" MaxLength="1000" />
+          <Property Name="Anotacion" Type="varchar" MaxLength="1000" />
+          <Property Name="IniciaTermino" Type="varchar" MaxLength="15" />
+          <Property Name="FinTermino" Type="varchar" MaxLength="15" />
+          <Property Name="Registro" Type="varchar" MaxLength="15" />
+          <Property Name="FechaInsercion" Type="datetime" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="FechaActDate" Type="datetime" />
+          <Property Name="IniciaTerminoDate" Type="datetime" />
+          <Property Name="FinTerminoDate" Type="datetime" />
+          <Property Name="RegistroDate" Type="datetime" />
+          <Property Name="UltimaActuacionDS" Type="int" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="char" MaxLength="1" />
+          <Property Name="TableName" Type="varchar" MaxLength="128" />
+          <Property Name="PrimaryKeyField" Type="varchar" MaxLength="255" />
+          <Property Name="PrimaryKeyValue" Type="varchar" MaxLength="255" />
+          <Property Name="FieldName" Type="varchar" MaxLength="128" />
+          <Property Name="OldValue" Type="varchar(max)" />
+          <Property Name="NewValue" Type="varchar(max)" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UserName" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="auditoria_usuarios">
+          <Key>
+            <PropertyRef Name="item" />
+          </Key>
+          <Property Name="item" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_usuario" Type="int" />
+          <Property Name="codigo_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="codugo_usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="codigo_accion" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="fecha_hora" Type="datetime" Nullable="false" />
+          <Property Name="obligacion" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ip" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditoriaDS">
+          <Key>
+            <PropertyRef Name="IdRegistro" />
+          </Key>
+          <Property Name="IdRegistro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProceso" Type="int" Nullable="false" />
+          <Property Name="IdEvento" Type="int" Nullable="false" />
+          <Property Name="FechaHora" Type="datetime" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="ValorInt" Type="int" />
+          <Property Name="ValorString" Type="varchar" MaxLength="50" />
+          <Property Name="TiempoEspera" Type="float" />
+          <Property Name="FechaHoraNew" Type="datetime" />
+        </EntityType>
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="direccion_notificacion" Type="varchar" MaxLength="7500" />
+          <Property Name="maximo_procesos" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="fecha_expiracion" Type="smalldatetime" />
+          <Property Name="columna_abogado" Type="varchar" MaxLength="50" />
+          <Property Name="nivel" Type="numeric" Precision="10" Scale="0" />
+          <Property Name="columna_busqueda" Type="varchar" MaxLength="50" />
+          <Property Name="maximo_usuarios" Type="int" Nullable="false" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+          <Property Name="maximo_espacio_disco" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="license_key" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="100" />
+          <Property Name="direccion" Type="varchar" MaxLength="255" />
+          <Property Name="ciudad" Type="varchar" MaxLength="100" />
+          <Property Name="pais" Type="varchar" MaxLength="100" />
+          <Property Name="fecha_creacion" Type="smalldatetime" />
+          <Property Name="logo" Type="varchar" MaxLength="255" />
+          <Property Name="VJConnectMaximoProcesos" Type="int" Nullable="false" />
+          <Property Name="RepositorioDocumentos" Type="varchar" MaxLength="255" />
+          <Property Name="PaisId" Type="int" Nullable="false" />
+          <Property Name="CodigoAlternoConsecutivo" Type="int" Nullable="false" />
+          <Property Name="TipoLicenciaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="grupos">
+          <Key>
+            <PropertyRef Name="id_grupo" />
+          </Key>
+          <Property Name="id_grupo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="id_tipo_grupo" Type="int" Nullable="false" />
+          <Property Name="eliminado" Type="bit" Nullable="false" />
+          <Property Name="restringido" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="grupos_cuentas">
+          <Key>
+            <PropertyRef Name="id_cuenta" />
+            <PropertyRef Name="id_grupo" />
+          </Key>
+          <Property Name="id_cuenta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_grupo" Type="int" Nullable="false" />
+          <Property Name="id_rol" Type="int" />
+        </EntityType>
+        <EntityType Name="grupos_definicion">
+          <Key>
+            <PropertyRef Name="id_grupo" />
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_grupo" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HTTP500Errors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dt" Type="datetime" Nullable="false" />
+          <Property Name="Url" Type="varchar" MaxLength="1024" Nullable="false" />
+          <Property Name="AspDesc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="AspNumber" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="AspLine" Type="int" Nullable="false" />
+          <Property Name="AspColumn" Type="int" Nullable="false" />
+          <Property Name="ErrDesc" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="ErrNumber" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="Ref" Type="varchar" MaxLength="1024" Nullable="false" />
+          <Property Name="Ip" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Ua" Type="varchar" MaxLength="1024" Nullable="false" />
+          <Property Name="Method" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Data" Type="text" Nullable="false" />
+          <Property Name="id_cuenta" Type="varchar" MaxLength="50" />
+          <Property Name="id_usuario" Type="int" />
+        </EntityType>
+        <EntityType Name="procesos">
+          <Key>
+            <PropertyRef Name="obligacion" />
+          </Key>
+          <Property Name="codigo_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="obligacion" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clase_proceso" Type="int" />
+          <Property Name="demandante" Type="varchar" MaxLength="255" />
+          <Property Name="id_demandante" Type="varchar" MaxLength="25" />
+          <Property Name="demandado" Type="varchar" MaxLength="255" />
+          <Property Name="id_demandado" Type="varchar" MaxLength="25" />
+          <Property Name="tipo_intervencion" Type="int" />
+          <Property Name="intervencion_tercero" Type="int" />
+          <Property Name="tercero" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="id_tercero" Type="varchar" MaxLength="25" />
+          <Property Name="actor" Type="varchar" MaxLength="255" />
+          <Property Name="regional" Type="int" />
+          <Property Name="ubicacion_fisica" Type="varchar" MaxLength="50" />
+          <Property Name="abogado" Type="varchar" MaxLength="50" />
+          <Property Name="abogado2" Type="varchar" MaxLength="50" />
+          <Property Name="socio" Type="varchar" MaxLength="50" />
+          <Property Name="corresponsal" Type="varchar" MaxLength="50" />
+          <Property Name="dependiente" Type="varchar" MaxLength="255" />
+          <Property Name="tipo_tema" Type="int" />
+          <Property Name="tipo_estado" Type="int" />
+          <Property Name="abogado_contraparte" Type="varchar" MaxLength="50" />
+          <Property Name="pretension" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="tipo_juzgado" Type="int" />
+          <Property Name="numero_juzgado" Type="int" />
+          <Property Name="ciudad_juzgado" Type="int" />
+          <Property Name="tipo_juzgado_origen" Type="int" />
+          <Property Name="numero_juzgado_origen" Type="int" />
+          <Property Name="ciudad_juzgado_origen" Type="int" />
+          <Property Name="radicacion" Type="varchar" MaxLength="30" />
+          <Property Name="funcionario" Type="varchar" MaxLength="100" />
+          <Property Name="instancia" Type="varchar" MaxLength="30" />
+          <Property Name="fecha_digitacion" Type="smalldatetime" />
+          <Property Name="fecha_presentacion_demanda" Type="smalldatetime" />
+          <Property Name="fecha_admision_demanda" Type="datetime" />
+          <Property Name="fecha_notificacion_demanda" Type="smalldatetime" />
+          <Property Name="fecha_llamamiento" Type="smalldatetime" />
+          <Property Name="fecha_entrega_abogado" Type="smalldatetime" />
+          <Property Name="fecha_sentencia" Type="datetime" />
+          <Property Name="fecha_archivo" Type="smalldatetime" />
+          <Property Name="hechos" Type="varchar(max)" />
+          <Property Name="pretensiones" Type="varchar(max)" />
+          <Property Name="calificacion_motivos" Type="varchar(max)" />
+          <Property Name="calificacion_clase" Type="varchar" MaxLength="15" />
+          <Property Name="monto_provision" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="valor_asegurado" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="fecha_actualizacion" Type="smalldatetime" />
+          <Property Name="etapa" Type="int" />
+          <Property Name="porcentaje_recuperacion" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="tipo_dependencia" Type="int" />
+          <Property Name="observacion_abogado" Type="varchar(max)" />
+          <Property Name="fecha_observacion_abogado" Type="smalldatetime" />
+          <Property Name="proceso_vigilado" Type="char" MaxLength="2" />
+          <Property Name="columna_busqueda" Type="varchar" MaxLength="250" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="eliminado" Type="bit" />
+          <Property Name="ultima_actuacion" Type="int" />
+          <Property Name="referencia" Type="varchar" MaxLength="255" />
+          <Property Name="id_abogado" Type="int" />
+          <Property Name="usuario_insercion" Type="int" />
+          <Property Name="tipo_sentencia" Type="int" />
+          <Property Name="paz_y_salvo_abogado" Type="varchar" MaxLength="2" />
+          <Property Name="codigo_alterno" Type="varchar" MaxLength="50" />
+          <Property Name="UltimaActuacionDS" Type="int" />
+          <Property Name="fecha_sentencia_segunda_instancia" Type="datetime" />
+          <Property Name="tipo_sentencia_segunda_instancia" Type="int" />
+          <Property Name="sentido_sentencia" Type="varchar" MaxLength="255" />
+          <Property Name="sentido_sentencia_segunda_instancia" Type="varchar" MaxLength="255" />
+          <Property Name="fecha_recepcion_proceso" Type="datetime" />
+          <Property Name="LoteNumero" Type="varchar" MaxLength="50" />
+          <Property Name="id_area" Type="int" />
+          <Property Name="RadicacionOrigen" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProcesosDS">
+          <Key>
+            <PropertyRef Name="IdProceso" />
+          </Key>
+          <Property Name="IdProceso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Radicacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdCorporacion" Type="int" Nullable="false" />
+          <Property Name="Ponente" Type="varchar" MaxLength="255" />
+          <Property Name="Despacho" Type="varchar" MaxLength="255" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" />
+          <Property Name="Clase" Type="varchar" MaxLength="50" />
+          <Property Name="ContenidoRadicacion" Type="varchar" MaxLength="3000" />
+          <Property Name="UbicacionExpediente" Type="varchar" MaxLength="100" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+          <Property Name="obligacion" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FechaInsercion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioInsercion" Type="int" Nullable="false" />
+          <Property Name="FechaEliminacion" Type="datetime" />
+          <Property Name="UsuarioEliminacion" Type="int" />
+          <Property Name="UltimaActuacionDS" Type="int" />
+          <Property Name="FechaUltimaConsulta" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProcesosTYBA">
+          <Key>
+            <PropertyRef Name="ProcesoIdTYBA" />
+          </Key>
+          <Property Name="ProcesoIdTYBA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_cuenta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="obligacion" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Radicacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ProductoId" />
+          </Key>
+          <Property Name="ProductoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoProducto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Linea" Type="varchar" MaxLength="50" />
+          <Property Name="NombreProducto" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UnidadMedida" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValorUnitario" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Iva" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_estados">
+          <Key>
+            <PropertyRef Name="tipo_estado" />
+          </Key>
+          <Property Name="tipo_estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="proceso_vigente" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="id_cuenta" Type="varchar" MaxLength="50" />
+          <Property Name="eliminado" Type="bit" Nullable="false" />
+          <Property Name="terminacion_anormal" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="TipoLicencias">
+          <Key>
+            <PropertyRef Name="TipoLicenciaId" />
+          </Key>
+          <Property Name="TipoLicenciaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoLicencia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tokens">
+          <Key>
+            <PropertyRef Name="token" />
+          </Key>
+          <Property Name="id_token" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="token" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_cuenta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha_hora" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="100" />
+          <Property Name="cargo" Type="varchar" MaxLength="50" />
+          <Property Name="telefono1" Type="varchar" MaxLength="50" />
+          <Property Name="telefono2" Type="varchar" MaxLength="50" />
+          <Property Name="pwd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="activo" Type="char" MaxLength="1" />
+          <Property Name="zona_horaria_diferencia" Type="int" Nullable="false" />
+          <Property Name="eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RedelexSGPEnt.dbo.usuarios_grupos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="usuarios_grupos">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="id_grupo" />
+          </Key>
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_grupo" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RedelexSGPEnt.dbo.v_usuarios_cuentas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_usuarios_cuentas">
+          <Key>
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="pwd" />
+            <PropertyRef Name="nomestado" />
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="id_cuenta" />
+            <PropertyRef Name="eliminado" />
+          </Key>
+          <Property Name="codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="100" />
+          <Property Name="cargo" Type="varchar" MaxLength="50" />
+          <Property Name="telefono1" Type="varchar" MaxLength="50" />
+          <Property Name="telefono2" Type="varchar" MaxLength="50" />
+          <Property Name="pwd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre_cliente" Type="varchar" MaxLength="50" />
+          <Property Name="direccion_notificacion" Type="varchar" MaxLength="7500" />
+          <Property Name="maximo_procesos" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="fecha_expiracion" Type="smalldatetime" />
+          <Property Name="columna_busqueda" Type="varchar" MaxLength="50" />
+          <Property Name="activo" Type="char" MaxLength="1" />
+          <Property Name="tipo_sitio" Type="varchar" MaxLength="50" />
+          <Property Name="nomestado" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_cuenta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="eliminado" Type="bit" Nullable="false" />
+          <Property Name="RepositorioDocumentos" Type="varchar" MaxLength="255" />
+          <Property Name="PaisId" Type="int" />
+          <Property Name="CodigoAlternoConsecutivo" Type="int" />
+          <Property Name="ClienteActivo" Type="bit" />
+        </EntityType>
+        <Association Name="FK_ActuacionesDS_ProcesosDS">
+          <End Role="ProcesosDS" Type="Self.ProcesosDS" Multiplicity="1" />
+          <End Role="ActuacionesDS" Type="Self.ActuacionesDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcesosDS">
+              <PropertyRef Name="IdProceso" />
+            </Principal>
+            <Dependent Role="ActuacionesDS">
+              <PropertyRef Name="IdProceso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clientes_TipoLicencias">
+          <End Role="TipoLicencias" Type="Self.TipoLicencias" Multiplicity="1" />
+          <End Role="clientes" Type="Self.clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoLicencias">
+              <PropertyRef Name="TipoLicenciaId" />
+            </Principal>
+            <Dependent Role="clientes">
+              <PropertyRef Name="TipoLicenciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grupos_cuentas_clientes">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="grupos_cuentas" Type="Self.grupos_cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="grupos_cuentas">
+              <PropertyRef Name="id_cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grupos_cuentas_grupos">
+          <End Role="grupos" Type="Self.grupos" Multiplicity="1" />
+          <End Role="grupos_cuentas" Type="Self.grupos_cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupos">
+              <PropertyRef Name="id_grupo" />
+            </Principal>
+            <Dependent Role="grupos_cuentas">
+              <PropertyRef Name="id_grupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grupos_definicion_grupos">
+          <End Role="grupos" Type="Self.grupos" Multiplicity="1" />
+          <End Role="grupos_definicion" Type="Self.grupos_definicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupos">
+              <PropertyRef Name="id_grupo" />
+            </Principal>
+            <Dependent Role="grupos_definicion">
+              <PropertyRef Name="id_grupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grupos_definicion_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="grupos_definicion" Type="Self.grupos_definicion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="grupos_definicion">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procesos_clientes">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="procesos" Type="Self.procesos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="procesos">
+              <PropertyRef Name="codigo_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procesos_tipo_estados">
+          <End Role="tipo_estados" Type="Self.tipo_estados" Multiplicity="0..1" />
+          <End Role="procesos" Type="Self.procesos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_estados">
+              <PropertyRef Name="tipo_estado" />
+            </Principal>
+            <Dependent Role="procesos">
+              <PropertyRef Name="tipo_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcesosDS_procesos">
+          <End Role="procesos" Type="Self.procesos" Multiplicity="1" />
+          <End Role="ProcesosDS" Type="Self.ProcesosDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="procesos">
+              <PropertyRef Name="obligacion" />
+            </Principal>
+            <Dependent Role="ProcesosDS">
+              <PropertyRef Name="obligacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcesosTYBA_procesos">
+          <End Role="procesos" Type="Self.procesos" Multiplicity="1" />
+          <End Role="ProcesosTYBA" Type="Self.ProcesosTYBA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="procesos">
+              <PropertyRef Name="obligacion" />
+            </Principal>
+            <Dependent Role="ProcesosTYBA">
+              <PropertyRef Name="obligacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RedelexModelStoreContainer">
+          <EntitySet Name="abogados" EntityType="Self.abogados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="acciones_usuarios" EntityType="Self.acciones_usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="actuaciones_judiciales" EntityType="Self.actuaciones_judiciales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActuacionesDS" EntityType="Self.ActuacionesDS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Audit" EntityType="Self.Audit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="auditoria_usuarios" EntityType="Self.auditoria_usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuditoriaDS" EntityType="Self.AuditoriaDS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clientes" EntityType="Self.clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grupos" EntityType="Self.grupos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grupos_cuentas" EntityType="Self.grupos_cuentas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grupos_definicion" EntityType="Self.grupos_definicion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HTTP500Errors" EntityType="Self.HTTP500Errors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="procesos" EntityType="Self.procesos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcesosDS" EntityType="Self.ProcesosDS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcesosTYBA" EntityType="Self.ProcesosTYBA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_estados" EntityType="Self.tipo_estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoLicencias" EntityType="Self.TipoLicencias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tokens" EntityType="Self.tokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarios_grupos" EntityType="Self.usuarios_grupos" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [usuarios_grupos].[id_usuario] AS [id_usuario], 
+    [usuarios_grupos].[id_grupo] AS [id_grupo]
+    FROM [dbo].[usuarios_grupos] AS [usuarios_grupos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_usuarios_cuentas" EntityType="Self.v_usuarios_cuentas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_usuarios_cuentas].[codigo] AS [codigo], 
+    [v_usuarios_cuentas].[nombre] AS [nombre], 
+    [v_usuarios_cuentas].[correo] AS [correo], 
+    [v_usuarios_cuentas].[cargo] AS [cargo], 
+    [v_usuarios_cuentas].[telefono1] AS [telefono1], 
+    [v_usuarios_cuentas].[telefono2] AS [telefono2], 
+    [v_usuarios_cuentas].[pwd] AS [pwd], 
+    [v_usuarios_cuentas].[nombre_cliente] AS [nombre_cliente], 
+    [v_usuarios_cuentas].[direccion_notificacion] AS [direccion_notificacion], 
+    [v_usuarios_cuentas].[maximo_procesos] AS [maximo_procesos], 
+    [v_usuarios_cuentas].[fecha_expiracion] AS [fecha_expiracion], 
+    [v_usuarios_cuentas].[columna_busqueda] AS [columna_busqueda], 
+    [v_usuarios_cuentas].[activo] AS [activo], 
+    [v_usuarios_cuentas].[tipo_sitio] AS [tipo_sitio], 
+    [v_usuarios_cuentas].[nomestado] AS [nomestado], 
+    [v_usuarios_cuentas].[id_usuario] AS [id_usuario], 
+    [v_usuarios_cuentas].[id_cuenta] AS [id_cuenta], 
+    [v_usuarios_cuentas].[eliminado] AS [eliminado], 
+    [v_usuarios_cuentas].[RepositorioDocumentos] AS [RepositorioDocumentos], 
+    [v_usuarios_cuentas].[PaisId] AS [PaisId], 
+    [v_usuarios_cuentas].[CodigoAlternoConsecutivo] AS [CodigoAlternoConsecutivo], 
+    [v_usuarios_cuentas].[ClienteActivo] AS [ClienteActivo]
+    FROM [dbo].[v_usuarios_cuentas] AS [v_usuarios_cuentas]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ActuacionesDS_ProcesosDS" Association="Self.FK_ActuacionesDS_ProcesosDS">
+            <End Role="ProcesosDS" EntitySet="ProcesosDS" />
+            <End Role="ActuacionesDS" EntitySet="ActuacionesDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clientes_TipoLicencias" Association="Self.FK_clientes_TipoLicencias">
+            <End Role="TipoLicencias" EntitySet="TipoLicencias" />
+            <End Role="clientes" EntitySet="clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grupos_cuentas_clientes" Association="Self.FK_grupos_cuentas_clientes">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="grupos_cuentas" EntitySet="grupos_cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grupos_cuentas_grupos" Association="Self.FK_grupos_cuentas_grupos">
+            <End Role="grupos" EntitySet="grupos" />
+            <End Role="grupos_cuentas" EntitySet="grupos_cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grupos_definicion_grupos" Association="Self.FK_grupos_definicion_grupos">
+            <End Role="grupos" EntitySet="grupos" />
+            <End Role="grupos_definicion" EntitySet="grupos_definicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grupos_definicion_usuarios" Association="Self.FK_grupos_definicion_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="grupos_definicion" EntitySet="grupos_definicion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procesos_clientes" Association="Self.FK_procesos_clientes">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="procesos" EntitySet="procesos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procesos_tipo_estados" Association="Self.FK_procesos_tipo_estados">
+            <End Role="tipo_estados" EntitySet="tipo_estados" />
+            <End Role="procesos" EntitySet="procesos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcesosDS_procesos" Association="Self.FK_ProcesosDS_procesos">
+            <End Role="procesos" EntitySet="procesos" />
+            <End Role="ProcesosDS" EntitySet="ProcesosDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcesosTYBA_procesos" Association="Self.FK_ProcesosTYBA_procesos">
+            <End Role="procesos" EntitySet="procesos" />
+            <End Role="ProcesosTYBA" EntitySet="ProcesosTYBA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RedelexModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="abogados">
+          <Key>
+            <PropertyRef Name="id_abogado" />
+          </Key>
+          <Property Name="abogado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="apellido1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_vinculacion" Type="Int32" />
+          <Property Name="fecha_contrato" Type="DateTime" Precision="0" />
+          <Property Name="direccion_residencia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="telefono_residencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_oficina" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="telefono_oficina" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="departamento" Type="Int32" />
+          <Property Name="ciudad" Type="Int32" Nullable="false" />
+          <Property Name="apartado_aereo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="total_casos" Type="Int32" />
+          <Property Name="regional" Type="Int32" />
+          <Property Name="observacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_actualizacion" Type="DateTime" Precision="0" />
+          <Property Name="tarjeta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_regimen" Type="Int16" />
+          <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="403" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="tipo_abogado" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="id_abogado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <Property Name="telefono_celular" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="usuario_asociado" Type="Int32" />
+        </EntityType>
+        <EntityType Name="acciones_usuarios">
+          <Key>
+            <PropertyRef Name="codigo_accion" />
+          </Key>
+          <Property Name="codigo_accion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="RedelexEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="abogados" EntityType="Self.abogados" />
+          <EntitySet Name="acciones_usuarios" EntityType="Self.acciones_usuarios" />
+          <EntitySet Name="actuaciones_judiciales" EntityType="RedelexModel.actuaciones_judiciales" />
+          <EntitySet Name="ActuacionesDS" EntityType="RedelexModel.ActuacionesDS" />
+          <EntitySet Name="Audit" EntityType="RedelexModel.Audit" />
+          <EntitySet Name="auditoria_usuarios" EntityType="RedelexModel.auditoria_usuarios" />
+          <EntitySet Name="AuditoriaDS" EntityType="RedelexModel.AuditoriaDS" />
+          <EntitySet Name="clientes" EntityType="RedelexModel.clientes" />
+          <EntitySet Name="grupos" EntityType="RedelexModel.grupos" />
+          <EntitySet Name="grupos_cuentas" EntityType="RedelexModel.grupos_cuentas" />
+          <EntitySet Name="HTTP500Errors" EntityType="RedelexModel.HTTP500Errors" />
+          <EntitySet Name="procesos" EntityType="RedelexModel.procesos" />
+          <EntitySet Name="ProcesosDS" EntityType="RedelexModel.ProcesosDS" />
+          <EntitySet Name="ProcesosTYBA" EntityType="RedelexModel.ProcesosTYBA" />
+          <EntitySet Name="Productos" EntityType="RedelexModel.Productos" />
+          <EntitySet Name="tipo_estados" EntityType="RedelexModel.tipo_estados" />
+          <EntitySet Name="TipoLicencias" EntityType="RedelexModel.TipoLicencias" />
+          <EntitySet Name="tokens" EntityType="RedelexModel.tokens" />
+          <EntitySet Name="usuarios" EntityType="RedelexModel.usuarios" />
+          <EntitySet Name="usuarios_grupos" EntityType="RedelexModel.usuarios_grupos" />
+          <EntitySet Name="v_usuarios_cuentas" EntityType="RedelexModel.v_usuarios_cuentas" />
+          <AssociationSet Name="FK_ActuacionesDS_ProcesosDS" Association="RedelexModel.FK_ActuacionesDS_ProcesosDS">
+            <End Role="ProcesosDS" EntitySet="ProcesosDS" />
+            <End Role="ActuacionesDS" EntitySet="ActuacionesDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_clientes_TipoLicencias" Association="RedelexModel.FK_clientes_TipoLicencias">
+            <End Role="TipoLicencias" EntitySet="TipoLicencias" />
+            <End Role="clientes" EntitySet="clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grupos_cuentas_clientes" Association="RedelexModel.FK_grupos_cuentas_clientes">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="grupos_cuentas" EntitySet="grupos_cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procesos_clientes" Association="RedelexModel.FK_procesos_clientes">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="procesos" EntitySet="procesos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_grupos_cuentas_grupos" Association="RedelexModel.FK_grupos_cuentas_grupos">
+            <End Role="grupos" EntitySet="grupos" />
+            <End Role="grupos_cuentas" EntitySet="grupos_cuentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procesos_tipo_estados" Association="RedelexModel.FK_procesos_tipo_estados">
+            <End Role="tipo_estados" EntitySet="tipo_estados" />
+            <End Role="procesos" EntitySet="procesos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcesosDS_procesos" Association="RedelexModel.FK_ProcesosDS_procesos">
+            <End Role="procesos" EntitySet="procesos" />
+            <End Role="ProcesosDS" EntitySet="ProcesosDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcesosTYBA_procesos" Association="RedelexModel.FK_ProcesosTYBA_procesos">
+            <End Role="procesos" EntitySet="procesos" />
+            <End Role="ProcesosTYBA" EntitySet="ProcesosTYBA" />
+          </AssociationSet>
+          <AssociationSet Name="grupos_definicion" Association="RedelexModel.grupos_definicion">
+            <End Role="grupos" EntitySet="grupos" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="actuaciones_judiciales">
+          <Key>
+            <PropertyRef Name="item" />
+          </Key>
+          <Property Name="item" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="obligacion" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="codigo_actuacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="actuacion_padre" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fecha_actuacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_vencimiento" Type="DateTime" Precision="3" />
+          <Property Name="observacion" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="usuario_insercion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_insercion" Type="DateTime" Precision="3" />
+          <Property Name="fecha_modificacion" Type="DateTime" Precision="3" />
+          <Property Name="aprobado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="aprobado_por" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_aprobacion" Type="DateTime" Precision="3" />
+          <Property Name="clase_actuacion" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="eliminado" Type="Boolean" />
+          <Property Name="tipo_actuacion" Type="Int32" />
+          <Property Name="tipo_etapa" Type="Int32" />
+          <Property Name="hora_actuacion" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="hora_vencimiento" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ejecutado" Type="Int32" />
+          <Property Name="responsable" Type="Int32" />
+          <Property Name="VersionNo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ActuacionesDS">
+          <Key>
+            <PropertyRef Name="IdActuacion" />
+          </Key>
+          <Property Name="IdActuacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProceso" Type="Int32" Nullable="false" />
+          <Property Name="FechaAct" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Actuacion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Anotacion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IniciaTermino" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FinTermino" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Registro" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FechaInsercion" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="FechaActDate" Type="DateTime" Precision="3" />
+          <Property Name="IniciaTerminoDate" Type="DateTime" Precision="3" />
+          <Property Name="FinTerminoDate" Type="DateTime" Precision="3" />
+          <Property Name="RegistroDate" Type="DateTime" Precision="3" />
+          <Property Name="UltimaActuacionDS" Type="Int32" />
+          <NavigationProperty Name="ProcesosDS" Relationship="RedelexModel.FK_ActuacionesDS_ProcesosDS" FromRole="ActuacionesDS" ToRole="ProcesosDS" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="TableName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PrimaryKeyField" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PrimaryKeyValue" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FieldName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="OldValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NewValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="auditoria_usuarios">
+          <Key>
+            <PropertyRef Name="item" />
+          </Key>
+          <Property Name="item" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_usuario" Type="Int32" />
+          <Property Name="codigo_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="codugo_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_accion" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_hora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="obligacion" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ip" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AuditoriaDS">
+          <Key>
+            <PropertyRef Name="IdRegistro" />
+          </Key>
+          <Property Name="IdRegistro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProceso" Type="Int32" Nullable="false" />
+          <Property Name="IdEvento" Type="Int32" Nullable="false" />
+          <Property Name="FechaHora" Type="DateTime" Precision="3" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ValorInt" Type="Int32" />
+          <Property Name="ValorString" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TiempoEspera" Type="Double" />
+          <Property Name="FechaHoraNew" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_notificacion" Type="String" MaxLength="7500" FixedLength="false" Unicode="false" />
+          <Property Name="maximo_procesos" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="fecha_expiracion" Type="DateTime" Precision="0" />
+          <Property Name="columna_abogado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nivel" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="columna_busqueda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="maximo_usuarios" Type="Int32" Nullable="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <Property Name="maximo_espacio_disco" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="license_key" Type="Guid" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ciudad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="pais" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+          <Property Name="logo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="VJConnectMaximoProcesos" Type="Int32" Nullable="false" />
+          <Property Name="RepositorioDocumentos" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PaisId" Type="Int32" Nullable="false" />
+          <Property Name="CodigoAlternoConsecutivo" Type="Int32" Nullable="false" />
+          <Property Name="TipoLicenciaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TipoLicencias" Relationship="RedelexModel.FK_clientes_TipoLicencias" FromRole="clientes" ToRole="TipoLicencias" />
+          <NavigationProperty Name="grupos_cuentas" Relationship="RedelexModel.FK_grupos_cuentas_clientes" FromRole="clientes" ToRole="grupos_cuentas" />
+          <NavigationProperty Name="procesos" Relationship="RedelexModel.FK_procesos_clientes" FromRole="clientes" ToRole="procesos" />
+        </EntityType>
+        <EntityType Name="grupos">
+          <Key>
+            <PropertyRef Name="id_grupo" />
+          </Key>
+          <Property Name="id_grupo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="id_tipo_grupo" Type="Int32" Nullable="false" />
+          <Property Name="eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="restringido" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="grupos_cuentas" Relationship="RedelexModel.FK_grupos_cuentas_grupos" FromRole="grupos" ToRole="grupos_cuentas" />
+          <NavigationProperty Name="usuarios" Relationship="RedelexModel.grupos_definicion" FromRole="grupos" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="grupos_cuentas">
+          <Key>
+            <PropertyRef Name="id_cuenta" />
+            <PropertyRef Name="id_grupo" />
+          </Key>
+          <Property Name="id_cuenta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_grupo" Type="Int32" Nullable="false" />
+          <Property Name="id_rol" Type="Int32" />
+          <NavigationProperty Name="clientes" Relationship="RedelexModel.FK_grupos_cuentas_clientes" FromRole="grupos_cuentas" ToRole="clientes" />
+          <NavigationProperty Name="grupos" Relationship="RedelexModel.FK_grupos_cuentas_grupos" FromRole="grupos_cuentas" ToRole="grupos" />
+        </EntityType>
+        <EntityType Name="HTTP500Errors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="AspDesc" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="AspNumber" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="AspLine" Type="Int32" Nullable="false" />
+          <Property Name="AspColumn" Type="Int32" Nullable="false" />
+          <Property Name="ErrDesc" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="ErrNumber" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Ref" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="Ip" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Ua" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="Method" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Data" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="id_cuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_usuario" Type="Int32" />
+        </EntityType>
+        <EntityType Name="procesos">
+          <Key>
+            <PropertyRef Name="obligacion" />
+          </Key>
+          <Property Name="codigo_cliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="obligacion" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clase_proceso" Type="Int32" />
+          <Property Name="demandante" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="id_demandante" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="demandado" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="id_demandado" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_intervencion" Type="Int32" />
+          <Property Name="intervencion_tercero" Type="Int32" />
+          <Property Name="tercero" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="id_tercero" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="actor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="regional" Type="Int32" />
+          <Property Name="ubicacion_fisica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="abogado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="abogado2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="socio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="corresponsal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dependiente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_tema" Type="Int32" />
+          <Property Name="tipo_estado" Type="Int32" />
+          <Property Name="abogado_contraparte" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pretension" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="tipo_juzgado" Type="Int32" />
+          <Property Name="numero_juzgado" Type="Int32" />
+          <Property Name="ciudad_juzgado" Type="Int32" />
+          <Property Name="tipo_juzgado_origen" Type="Int32" />
+          <Property Name="numero_juzgado_origen" Type="Int32" />
+          <Property Name="ciudad_juzgado_origen" Type="Int32" />
+          <Property Name="radicacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="funcionario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="instancia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_digitacion" Type="DateTime" Precision="0" />
+          <Property Name="fecha_presentacion_demanda" Type="DateTime" Precision="0" />
+          <Property Name="fecha_admision_demanda" Type="DateTime" Precision="3" />
+          <Property Name="fecha_notificacion_demanda" Type="DateTime" Precision="0" />
+          <Property Name="fecha_llamamiento" Type="DateTime" Precision="0" />
+          <Property Name="fecha_entrega_abogado" Type="DateTime" Precision="0" />
+          <Property Name="fecha_sentencia" Type="DateTime" Precision="3" />
+          <Property Name="fecha_archivo" Type="DateTime" Precision="0" />
+          <Property Name="hechos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pretensiones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="calificacion_motivos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="calificacion_clase" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="monto_provision" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="valor_asegurado" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fecha_actualizacion" Type="DateTime" Precision="0" />
+          <Property Name="etapa" Type="Int32" />
+          <Property Name="porcentaje_recuperacion" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="tipo_dependencia" Type="Int32" />
+          <Property Name="observacion_abogado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_observacion_abogado" Type="DateTime" Precision="0" />
+          <Property Name="proceso_vigilado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="columna_busqueda" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="eliminado" Type="Boolean" />
+          <Property Name="ultima_actuacion" Type="Int32" />
+          <Property Name="referencia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="id_abogado" Type="Int32" />
+          <Property Name="usuario_insercion" Type="Int32" />
+          <Property Name="tipo_sentencia" Type="Int32" />
+          <Property Name="paz_y_salvo_abogado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="codigo_alterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UltimaActuacionDS" Type="Int32" />
+          <Property Name="fecha_sentencia_segunda_instancia" Type="DateTime" Precision="3" />
+          <Property Name="tipo_sentencia_segunda_instancia" Type="Int32" />
+          <Property Name="sentido_sentencia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sentido_sentencia_segunda_instancia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_recepcion_proceso" Type="DateTime" Precision="3" />
+          <Property Name="LoteNumero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_area" Type="Int32" />
+          <Property Name="RadicacionOrigen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="clientes" Relationship="RedelexModel.FK_procesos_clientes" FromRole="procesos" ToRole="clientes" />
+          <NavigationProperty Name="tipo_estados" Relationship="RedelexModel.FK_procesos_tipo_estados" FromRole="procesos" ToRole="tipo_estados" />
+          <NavigationProperty Name="ProcesosDS" Relationship="RedelexModel.FK_ProcesosDS_procesos" FromRole="procesos" ToRole="ProcesosDS" />
+          <NavigationProperty Name="ProcesosTYBA" Relationship="RedelexModel.FK_ProcesosTYBA_procesos" FromRole="procesos" ToRole="ProcesosTYBA" />
+        </EntityType>
+        <EntityType Name="ProcesosDS">
+          <Key>
+            <PropertyRef Name="IdProceso" />
+          </Key>
+          <Property Name="IdProceso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Radicacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdCorporacion" Type="Int32" Nullable="false" />
+          <Property Name="Ponente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Despacho" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Clase" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContenidoRadicacion" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="UbicacionExpediente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="obligacion" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FechaInsercion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioInsercion" Type="Int32" Nullable="false" />
+          <Property Name="FechaEliminacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioEliminacion" Type="Int32" />
+          <Property Name="UltimaActuacionDS" Type="Int32" />
+          <Property Name="FechaUltimaConsulta" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ActuacionesDS" Relationship="RedelexModel.FK_ActuacionesDS_ProcesosDS" FromRole="ProcesosDS" ToRole="ActuacionesDS" />
+          <NavigationProperty Name="procesos" Relationship="RedelexModel.FK_ProcesosDS_procesos" FromRole="ProcesosDS" ToRole="procesos" />
+        </EntityType>
+        <EntityType Name="ProcesosTYBA">
+          <Key>
+            <PropertyRef Name="ProcesoIdTYBA" />
+          </Key>
+          <Property Name="ProcesoIdTYBA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cuenta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="obligacion" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Radicacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="procesos" Relationship="RedelexModel.FK_ProcesosTYBA_procesos" FromRole="ProcesosTYBA" ToRole="procesos" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ProductoId" />
+          </Key>
+          <Property Name="ProductoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoProducto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Linea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NombreProducto" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UnidadMedida" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ValorUnitario" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Iva" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Total" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tipo_estados">
+          <Key>
+            <PropertyRef Name="tipo_estado" />
+          </Key>
+          <Property Name="tipo_estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="proceso_vigente" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="id_cuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="terminacion_anormal" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="procesos" Relationship="RedelexModel.FK_procesos_tipo_estados" FromRole="tipo_estados" ToRole="procesos" />
+        </EntityType>
+        <EntityType Name="TipoLicencias">
+          <Key>
+            <PropertyRef Name="TipoLicenciaId" />
+          </Key>
+          <Property Name="TipoLicenciaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoLicencia" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="clientes" Relationship="RedelexModel.FK_clientes_TipoLicencias" FromRole="TipoLicencias" ToRole="clientes" />
+        </EntityType>
+        <EntityType Name="tokens">
+          <Key>
+            <PropertyRef Name="token" />
+          </Key>
+          <Property Name="id_token" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="token" Type="Guid" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_cuenta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_hora" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefono1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefono2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pwd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="zona_horaria_diferencia" Type="Int32" Nullable="false" />
+          <Property Name="eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="grupos" Relationship="RedelexModel.grupos_definicion" FromRole="usuarios" ToRole="grupos" />
+        </EntityType>
+        <EntityType Name="usuarios_grupos">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="id_grupo" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_grupo" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_usuarios_cuentas">
+          <Key>
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="pwd" />
+            <PropertyRef Name="nomestado" />
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="id_cuenta" />
+            <PropertyRef Name="eliminado" />
+          </Key>
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefono1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefono2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pwd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion_notificacion" Type="String" MaxLength="7500" FixedLength="false" Unicode="false" />
+          <Property Name="maximo_procesos" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="fecha_expiracion" Type="DateTime" Precision="0" />
+          <Property Name="columna_busqueda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="tipo_sitio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nomestado" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_cuenta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="RepositorioDocumentos" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PaisId" Type="Int32" />
+          <Property Name="CodigoAlternoConsecutivo" Type="Int32" />
+          <Property Name="ClienteActivo" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_ActuacionesDS_ProcesosDS">
+          <End Type="RedelexModel.ProcesosDS" Role="ProcesosDS" Multiplicity="1" />
+          <End Type="RedelexModel.ActuacionesDS" Role="ActuacionesDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcesosDS">
+              <PropertyRef Name="IdProceso" />
+            </Principal>
+            <Dependent Role="ActuacionesDS">
+              <PropertyRef Name="IdProceso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_clientes_TipoLicencias">
+          <End Type="RedelexModel.TipoLicencias" Role="TipoLicencias" Multiplicity="1" />
+          <End Type="RedelexModel.clientes" Role="clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoLicencias">
+              <PropertyRef Name="TipoLicenciaId" />
+            </Principal>
+            <Dependent Role="clientes">
+              <PropertyRef Name="TipoLicenciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grupos_cuentas_clientes">
+          <End Type="RedelexModel.clientes" Role="clientes" Multiplicity="1" />
+          <End Type="RedelexModel.grupos_cuentas" Role="grupos_cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="grupos_cuentas">
+              <PropertyRef Name="id_cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procesos_clientes">
+          <End Type="RedelexModel.clientes" Role="clientes" Multiplicity="1" />
+          <End Type="RedelexModel.procesos" Role="procesos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="procesos">
+              <PropertyRef Name="codigo_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_grupos_cuentas_grupos">
+          <End Type="RedelexModel.grupos" Role="grupos" Multiplicity="1" />
+          <End Type="RedelexModel.grupos_cuentas" Role="grupos_cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="grupos">
+              <PropertyRef Name="id_grupo" />
+            </Principal>
+            <Dependent Role="grupos_cuentas">
+              <PropertyRef Name="id_grupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procesos_tipo_estados">
+          <End Type="RedelexModel.tipo_estados" Role="tipo_estados" Multiplicity="0..1" />
+          <End Type="RedelexModel.procesos" Role="procesos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_estados">
+              <PropertyRef Name="tipo_estado" />
+            </Principal>
+            <Dependent Role="procesos">
+              <PropertyRef Name="tipo_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcesosDS_procesos">
+          <End Type="RedelexModel.procesos" Role="procesos" Multiplicity="1" />
+          <End Type="RedelexModel.ProcesosDS" Role="ProcesosDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="procesos">
+              <PropertyRef Name="obligacion" />
+            </Principal>
+            <Dependent Role="ProcesosDS">
+              <PropertyRef Name="obligacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcesosTYBA_procesos">
+          <End Type="RedelexModel.procesos" Role="procesos" Multiplicity="1" />
+          <End Type="RedelexModel.ProcesosTYBA" Role="ProcesosTYBA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="procesos">
+              <PropertyRef Name="obligacion" />
+            </Principal>
+            <Dependent Role="ProcesosTYBA">
+              <PropertyRef Name="obligacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="grupos_definicion">
+          <End Type="RedelexModel.grupos" Role="grupos" Multiplicity="*" />
+          <End Type="RedelexModel.usuarios" Role="usuarios" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RedelexModelStoreContainer" CdmEntityContainer="RedelexEntities">
+          <EntitySetMapping Name="abogados">
+            <EntityTypeMapping TypeName="RedelexModel.abogados">
+              <MappingFragment StoreEntitySet="abogados">
+                <ScalarProperty Name="abogado" ColumnName="abogado" />
+                <ScalarProperty Name="nombre1" ColumnName="nombre1" />
+                <ScalarProperty Name="nombre2" ColumnName="nombre2" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+                <ScalarProperty Name="tipo_vinculacion" ColumnName="tipo_vinculacion" />
+                <ScalarProperty Name="fecha_contrato" ColumnName="fecha_contrato" />
+                <ScalarProperty Name="direccion_residencia" ColumnName="direccion_residencia" />
+                <ScalarProperty Name="telefono_residencia" ColumnName="telefono_residencia" />
+                <ScalarProperty Name="direccion_oficina" ColumnName="direccion_oficina" />
+                <ScalarProperty Name="telefono_oficina" ColumnName="telefono_oficina" />
+                <ScalarProperty Name="departamento" ColumnName="departamento" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="apartado_aereo" ColumnName="apartado_aereo" />
+                <ScalarProperty Name="total_casos" ColumnName="total_casos" />
+                <ScalarProperty Name="regional" ColumnName="regional" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="fecha_actualizacion" ColumnName="fecha_actualizacion" />
+                <ScalarProperty Name="tarjeta" ColumnName="tarjeta" />
+                <ScalarProperty Name="tipo_regimen" ColumnName="tipo_regimen" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipo_abogado" ColumnName="tipo_abogado" />
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+                <ScalarProperty Name="id_abogado" ColumnName="id_abogado" />
+                <ScalarProperty Name="id_cuenta" ColumnName="id_cuenta" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="telefono_celular" ColumnName="telefono_celular" />
+                <ScalarProperty Name="usuario_asociado" ColumnName="usuario_asociado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="acciones_usuarios">
+            <EntityTypeMapping TypeName="RedelexModel.acciones_usuarios">
+              <MappingFragment StoreEntitySet="acciones_usuarios">
+                <ScalarProperty Name="codigo_accion" ColumnName="codigo_accion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="actuaciones_judiciales">
+            <EntityTypeMapping TypeName="RedelexModel.actuaciones_judiciales">
+              <MappingFragment StoreEntitySet="actuaciones_judiciales">
+                <ScalarProperty Name="VersionNo" ColumnName="VersionNo" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="ejecutado" ColumnName="ejecutado" />
+                <ScalarProperty Name="hora_vencimiento" ColumnName="hora_vencimiento" />
+                <ScalarProperty Name="hora_actuacion" ColumnName="hora_actuacion" />
+                <ScalarProperty Name="tipo_etapa" ColumnName="tipo_etapa" />
+                <ScalarProperty Name="tipo_actuacion" ColumnName="tipo_actuacion" />
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+                <ScalarProperty Name="clase_actuacion" ColumnName="clase_actuacion" />
+                <ScalarProperty Name="fecha_aprobacion" ColumnName="fecha_aprobacion" />
+                <ScalarProperty Name="aprobado_por" ColumnName="aprobado_por" />
+                <ScalarProperty Name="aprobado" ColumnName="aprobado" />
+                <ScalarProperty Name="fecha_modificacion" ColumnName="fecha_modificacion" />
+                <ScalarProperty Name="fecha_insercion" ColumnName="fecha_insercion" />
+                <ScalarProperty Name="usuario_insercion" ColumnName="usuario_insercion" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+                <ScalarProperty Name="fecha_actuacion" ColumnName="fecha_actuacion" />
+                <ScalarProperty Name="actuacion_padre" ColumnName="actuacion_padre" />
+                <ScalarProperty Name="codigo_actuacion" ColumnName="codigo_actuacion" />
+                <ScalarProperty Name="obligacion" ColumnName="obligacion" />
+                <ScalarProperty Name="codigo_cliente" ColumnName="codigo_cliente" />
+                <ScalarProperty Name="item" ColumnName="item" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActuacionesDS">
+            <EntityTypeMapping TypeName="RedelexModel.ActuacionesDS">
+              <MappingFragment StoreEntitySet="ActuacionesDS">
+                <ScalarProperty Name="UltimaActuacionDS" ColumnName="UltimaActuacionDS" />
+                <ScalarProperty Name="RegistroDate" ColumnName="RegistroDate" />
+                <ScalarProperty Name="FinTerminoDate" ColumnName="FinTerminoDate" />
+                <ScalarProperty Name="IniciaTerminoDate" ColumnName="IniciaTerminoDate" />
+                <ScalarProperty Name="FechaActDate" ColumnName="FechaActDate" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="FechaInsercion" ColumnName="FechaInsercion" />
+                <ScalarProperty Name="Registro" ColumnName="Registro" />
+                <ScalarProperty Name="FinTermino" ColumnName="FinTermino" />
+                <ScalarProperty Name="IniciaTermino" ColumnName="IniciaTermino" />
+                <ScalarProperty Name="Anotacion" ColumnName="Anotacion" />
+                <ScalarProperty Name="Actuacion" ColumnName="Actuacion" />
+                <ScalarProperty Name="FechaAct" ColumnName="FechaAct" />
+                <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+                <ScalarProperty Name="IdActuacion" ColumnName="IdActuacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Audit">
+            <EntityTypeMapping TypeName="RedelexModel.Audit">
+              <MappingFragment StoreEntitySet="Audit">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+                <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="PrimaryKeyValue" ColumnName="PrimaryKeyValue" />
+                <ScalarProperty Name="PrimaryKeyField" ColumnName="PrimaryKeyField" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="auditoria_usuarios">
+            <EntityTypeMapping TypeName="RedelexModel.auditoria_usuarios">
+              <MappingFragment StoreEntitySet="auditoria_usuarios">
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="obligacion" ColumnName="obligacion" />
+                <ScalarProperty Name="fecha_hora" ColumnName="fecha_hora" />
+                <ScalarProperty Name="codigo_accion" ColumnName="codigo_accion" />
+                <ScalarProperty Name="codugo_usuario" ColumnName="codugo_usuario" />
+                <ScalarProperty Name="codigo_cliente" ColumnName="codigo_cliente" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="item" ColumnName="item" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuditoriaDS">
+            <EntityTypeMapping TypeName="RedelexModel.AuditoriaDS">
+              <MappingFragment StoreEntitySet="AuditoriaDS">
+                <ScalarProperty Name="FechaHoraNew" ColumnName="FechaHoraNew" />
+                <ScalarProperty Name="TiempoEspera" ColumnName="TiempoEspera" />
+                <ScalarProperty Name="ValorString" ColumnName="ValorString" />
+                <ScalarProperty Name="ValorInt" ColumnName="ValorInt" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+                <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
+                <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+                <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="RedelexModel.clientes">
+              <MappingFragment StoreEntitySet="clientes">
+                <ScalarProperty Name="TipoLicenciaId" ColumnName="TipoLicenciaId" />
+                <ScalarProperty Name="CodigoAlternoConsecutivo" ColumnName="CodigoAlternoConsecutivo" />
+                <ScalarProperty Name="PaisId" ColumnName="PaisId" />
+                <ScalarProperty Name="RepositorioDocumentos" ColumnName="RepositorioDocumentos" />
+                <ScalarProperty Name="VJConnectMaximoProcesos" ColumnName="VJConnectMaximoProcesos" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="pais" ColumnName="pais" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="license_key" ColumnName="license_key" />
+                <ScalarProperty Name="maximo_espacio_disco" ColumnName="maximo_espacio_disco" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="maximo_usuarios" ColumnName="maximo_usuarios" />
+                <ScalarProperty Name="columna_busqueda" ColumnName="columna_busqueda" />
+                <ScalarProperty Name="nivel" ColumnName="nivel" />
+                <ScalarProperty Name="columna_abogado" ColumnName="columna_abogado" />
+                <ScalarProperty Name="fecha_expiracion" ColumnName="fecha_expiracion" />
+                <ScalarProperty Name="maximo_procesos" ColumnName="maximo_procesos" />
+                <ScalarProperty Name="direccion_notificacion" ColumnName="direccion_notificacion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grupos">
+            <EntityTypeMapping TypeName="RedelexModel.grupos">
+              <MappingFragment StoreEntitySet="grupos">
+                <ScalarProperty Name="restringido" ColumnName="restringido" />
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+                <ScalarProperty Name="id_tipo_grupo" ColumnName="id_tipo_grupo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_grupo" ColumnName="id_grupo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grupos_cuentas">
+            <EntityTypeMapping TypeName="RedelexModel.grupos_cuentas">
+              <MappingFragment StoreEntitySet="grupos_cuentas">
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+                <ScalarProperty Name="id_grupo" ColumnName="id_grupo" />
+                <ScalarProperty Name="id_cuenta" ColumnName="id_cuenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HTTP500Errors">
+            <EntityTypeMapping TypeName="RedelexModel.HTTP500Errors">
+              <MappingFragment StoreEntitySet="HTTP500Errors">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_cuenta" ColumnName="id_cuenta" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
+                <ScalarProperty Name="Ua" ColumnName="Ua" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="Ref" ColumnName="Ref" />
+                <ScalarProperty Name="ErrNumber" ColumnName="ErrNumber" />
+                <ScalarProperty Name="ErrDesc" ColumnName="ErrDesc" />
+                <ScalarProperty Name="AspColumn" ColumnName="AspColumn" />
+                <ScalarProperty Name="AspLine" ColumnName="AspLine" />
+                <ScalarProperty Name="AspNumber" ColumnName="AspNumber" />
+                <ScalarProperty Name="AspDesc" ColumnName="AspDesc" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Dt" ColumnName="Dt" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="procesos">
+            <EntityTypeMapping TypeName="RedelexModel.procesos">
+              <MappingFragment StoreEntitySet="procesos">
+                <ScalarProperty Name="RadicacionOrigen" ColumnName="RadicacionOrigen" />
+                <ScalarProperty Name="id_area" ColumnName="id_area" />
+                <ScalarProperty Name="LoteNumero" ColumnName="LoteNumero" />
+                <ScalarProperty Name="fecha_recepcion_proceso" ColumnName="fecha_recepcion_proceso" />
+                <ScalarProperty Name="sentido_sentencia_segunda_instancia" ColumnName="sentido_sentencia_segunda_instancia" />
+                <ScalarProperty Name="sentido_sentencia" ColumnName="sentido_sentencia" />
+                <ScalarProperty Name="tipo_sentencia_segunda_instancia" ColumnName="tipo_sentencia_segunda_instancia" />
+                <ScalarProperty Name="fecha_sentencia_segunda_instancia" ColumnName="fecha_sentencia_segunda_instancia" />
+                <ScalarProperty Name="UltimaActuacionDS" ColumnName="UltimaActuacionDS" />
+                <ScalarProperty Name="codigo_alterno" ColumnName="codigo_alterno" />
+                <ScalarProperty Name="paz_y_salvo_abogado" ColumnName="paz_y_salvo_abogado" />
+                <ScalarProperty Name="tipo_sentencia" ColumnName="tipo_sentencia" />
+                <ScalarProperty Name="usuario_insercion" ColumnName="usuario_insercion" />
+                <ScalarProperty Name="id_abogado" ColumnName="id_abogado" />
+                <ScalarProperty Name="referencia" ColumnName="referencia" />
+                <ScalarProperty Name="ultima_actuacion" ColumnName="ultima_actuacion" />
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+                <ScalarProperty Name="columna_busqueda" ColumnName="columna_busqueda" />
+                <ScalarProperty Name="proceso_vigilado" ColumnName="proceso_vigilado" />
+                <ScalarProperty Name="fecha_observacion_abogado" ColumnName="fecha_observacion_abogado" />
+                <ScalarProperty Name="observacion_abogado" ColumnName="observacion_abogado" />
+                <ScalarProperty Name="tipo_dependencia" ColumnName="tipo_dependencia" />
+                <ScalarProperty Name="porcentaje_recuperacion" ColumnName="porcentaje_recuperacion" />
+                <ScalarProperty Name="etapa" ColumnName="etapa" />
+                <ScalarProperty Name="fecha_actualizacion" ColumnName="fecha_actualizacion" />
+                <ScalarProperty Name="valor_asegurado" ColumnName="valor_asegurado" />
+                <ScalarProperty Name="monto_provision" ColumnName="monto_provision" />
+                <ScalarProperty Name="calificacion_clase" ColumnName="calificacion_clase" />
+                <ScalarProperty Name="calificacion_motivos" ColumnName="calificacion_motivos" />
+                <ScalarProperty Name="pretensiones" ColumnName="pretensiones" />
+                <ScalarProperty Name="hechos" ColumnName="hechos" />
+                <ScalarProperty Name="fecha_archivo" ColumnName="fecha_archivo" />
+                <ScalarProperty Name="fecha_sentencia" ColumnName="fecha_sentencia" />
+                <ScalarProperty Name="fecha_entrega_abogado" ColumnName="fecha_entrega_abogado" />
+                <ScalarProperty Name="fecha_llamamiento" ColumnName="fecha_llamamiento" />
+                <ScalarProperty Name="fecha_notificacion_demanda" ColumnName="fecha_notificacion_demanda" />
+                <ScalarProperty Name="fecha_admision_demanda" ColumnName="fecha_admision_demanda" />
+                <ScalarProperty Name="fecha_presentacion_demanda" ColumnName="fecha_presentacion_demanda" />
+                <ScalarProperty Name="fecha_digitacion" ColumnName="fecha_digitacion" />
+                <ScalarProperty Name="instancia" ColumnName="instancia" />
+                <ScalarProperty Name="funcionario" ColumnName="funcionario" />
+                <ScalarProperty Name="radicacion" ColumnName="radicacion" />
+                <ScalarProperty Name="ciudad_juzgado_origen" ColumnName="ciudad_juzgado_origen" />
+                <ScalarProperty Name="numero_juzgado_origen" ColumnName="numero_juzgado_origen" />
+                <ScalarProperty Name="tipo_juzgado_origen" ColumnName="tipo_juzgado_origen" />
+                <ScalarProperty Name="ciudad_juzgado" ColumnName="ciudad_juzgado" />
+                <ScalarProperty Name="numero_juzgado" ColumnName="numero_juzgado" />
+                <ScalarProperty Name="tipo_juzgado" ColumnName="tipo_juzgado" />
+                <ScalarProperty Name="pretension" ColumnName="pretension" />
+                <ScalarProperty Name="abogado_contraparte" ColumnName="abogado_contraparte" />
+                <ScalarProperty Name="tipo_estado" ColumnName="tipo_estado" />
+                <ScalarProperty Name="tipo_tema" ColumnName="tipo_tema" />
+                <ScalarProperty Name="dependiente" ColumnName="dependiente" />
+                <ScalarProperty Name="corresponsal" ColumnName="corresponsal" />
+                <ScalarProperty Name="socio" ColumnName="socio" />
+                <ScalarProperty Name="abogado2" ColumnName="abogado2" />
+                <ScalarProperty Name="abogado" ColumnName="abogado" />
+                <ScalarProperty Name="ubicacion_fisica" ColumnName="ubicacion_fisica" />
+                <ScalarProperty Name="regional" ColumnName="regional" />
+                <ScalarProperty Name="actor" ColumnName="actor" />
+                <ScalarProperty Name="id_tercero" ColumnName="id_tercero" />
+                <ScalarProperty Name="tercero" ColumnName="tercero" />
+                <ScalarProperty Name="intervencion_tercero" ColumnName="intervencion_tercero" />
+                <ScalarProperty Name="tipo_intervencion" ColumnName="tipo_intervencion" />
+                <ScalarProperty Name="id_demandado" ColumnName="id_demandado" />
+                <ScalarProperty Name="demandado" ColumnName="demandado" />
+                <ScalarProperty Name="id_demandante" ColumnName="id_demandante" />
+                <ScalarProperty Name="demandante" ColumnName="demandante" />
+                <ScalarProperty Name="clase_proceso" ColumnName="clase_proceso" />
+                <ScalarProperty Name="obligacion" ColumnName="obligacion" />
+                <ScalarProperty Name="codigo_cliente" ColumnName="codigo_cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcesosDS">
+            <EntityTypeMapping TypeName="RedelexModel.ProcesosDS">
+              <MappingFragment StoreEntitySet="ProcesosDS">
+                <ScalarProperty Name="FechaUltimaConsulta" ColumnName="FechaUltimaConsulta" />
+                <ScalarProperty Name="UltimaActuacionDS" ColumnName="UltimaActuacionDS" />
+                <ScalarProperty Name="UsuarioEliminacion" ColumnName="UsuarioEliminacion" />
+                <ScalarProperty Name="FechaEliminacion" ColumnName="FechaEliminacion" />
+                <ScalarProperty Name="UsuarioInsercion" ColumnName="UsuarioInsercion" />
+                <ScalarProperty Name="FechaInsercion" ColumnName="FechaInsercion" />
+                <ScalarProperty Name="obligacion" ColumnName="obligacion" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="UbicacionExpediente" ColumnName="UbicacionExpediente" />
+                <ScalarProperty Name="ContenidoRadicacion" ColumnName="ContenidoRadicacion" />
+                <ScalarProperty Name="Clase" ColumnName="Clase" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Despacho" ColumnName="Despacho" />
+                <ScalarProperty Name="Ponente" ColumnName="Ponente" />
+                <ScalarProperty Name="IdCorporacion" ColumnName="IdCorporacion" />
+                <ScalarProperty Name="Radicacion" ColumnName="Radicacion" />
+                <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcesosTYBA">
+            <EntityTypeMapping TypeName="RedelexModel.ProcesosTYBA">
+              <MappingFragment StoreEntitySet="ProcesosTYBA">
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="Radicacion" ColumnName="Radicacion" />
+                <ScalarProperty Name="obligacion" ColumnName="obligacion" />
+                <ScalarProperty Name="id_cuenta" ColumnName="id_cuenta" />
+                <ScalarProperty Name="ProcesoIdTYBA" ColumnName="ProcesoIdTYBA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="RedelexModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Iva" ColumnName="Iva" />
+                <ScalarProperty Name="ValorUnitario" ColumnName="ValorUnitario" />
+                <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="Linea" ColumnName="Linea" />
+                <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+                <ScalarProperty Name="ProductoId" ColumnName="ProductoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_estados">
+            <EntityTypeMapping TypeName="RedelexModel.tipo_estados">
+              <MappingFragment StoreEntitySet="tipo_estados">
+                <ScalarProperty Name="terminacion_anormal" ColumnName="terminacion_anormal" />
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+                <ScalarProperty Name="id_cuenta" ColumnName="id_cuenta" />
+                <ScalarProperty Name="proceso_vigente" ColumnName="proceso_vigente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipo_estado" ColumnName="tipo_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoLicencias">
+            <EntityTypeMapping TypeName="RedelexModel.TipoLicencias">
+              <MappingFragment StoreEntitySet="TipoLicencias">
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="TipoLicencia" ColumnName="TipoLicencia" />
+                <ScalarProperty Name="TipoLicenciaId" ColumnName="TipoLicenciaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tokens">
+            <EntityTypeMapping TypeName="RedelexModel.tokens">
+              <MappingFragment StoreEntitySet="tokens">
+                <ScalarProperty Name="fecha_hora" ColumnName="fecha_hora" />
+                <ScalarProperty Name="id_cuenta" ColumnName="id_cuenta" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="id_token" ColumnName="id_token" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="RedelexModel.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+                <ScalarProperty Name="zona_horaria_diferencia" ColumnName="zona_horaria_diferencia" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="telefono2" ColumnName="telefono2" />
+                <ScalarProperty Name="telefono1" ColumnName="telefono1" />
+                <ScalarProperty Name="cargo" ColumnName="cargo" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios_grupos">
+            <EntityTypeMapping TypeName="RedelexModel.usuarios_grupos">
+              <MappingFragment StoreEntitySet="usuarios_grupos">
+                <ScalarProperty Name="id_grupo" ColumnName="id_grupo" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_usuarios_cuentas">
+            <EntityTypeMapping TypeName="RedelexModel.v_usuarios_cuentas">
+              <MappingFragment StoreEntitySet="v_usuarios_cuentas">
+                <ScalarProperty Name="ClienteActivo" ColumnName="ClienteActivo" />
+                <ScalarProperty Name="CodigoAlternoConsecutivo" ColumnName="CodigoAlternoConsecutivo" />
+                <ScalarProperty Name="PaisId" ColumnName="PaisId" />
+                <ScalarProperty Name="RepositorioDocumentos" ColumnName="RepositorioDocumentos" />
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+                <ScalarProperty Name="id_cuenta" ColumnName="id_cuenta" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nomestado" ColumnName="nomestado" />
+                <ScalarProperty Name="tipo_sitio" ColumnName="tipo_sitio" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="columna_busqueda" ColumnName="columna_busqueda" />
+                <ScalarProperty Name="fecha_expiracion" ColumnName="fecha_expiracion" />
+                <ScalarProperty Name="maximo_procesos" ColumnName="maximo_procesos" />
+                <ScalarProperty Name="direccion_notificacion" ColumnName="direccion_notificacion" />
+                <ScalarProperty Name="nombre_cliente" ColumnName="nombre_cliente" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="telefono2" ColumnName="telefono2" />
+                <ScalarProperty Name="telefono1" ColumnName="telefono1" />
+                <ScalarProperty Name="cargo" ColumnName="cargo" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="grupos_definicion" TypeName="RedelexModel.grupos_definicion" StoreEntitySet="grupos_definicion">
+            <EndProperty Name="usuarios">
+              <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+            </EndProperty>
+            <EndProperty Name="grupos">
+              <ScalarProperty Name="id_grupo" ColumnName="id_grupo" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="DDLGenerationTemplate" Value="$(VSEFTools)\DBGen\SSDLToSQL10.tt" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

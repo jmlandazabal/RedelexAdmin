@@ -1,0 +1,374 @@
+﻿@model RedelexDTO.ClienteDetalleInfo
+
+@{
+    ViewBag.Title = "Informacion de la Cuenta";
+    Layout = "~/Views/Shared/_LayoutMaterial.cshtml";
+}
+
+@{
+    var a = 0;
+    var b = 0;
+    var c = 0;
+    
+    if (Model.TotalProcesos >0)
+    {
+        a = (Model.TotalProcesosActivos * 100) / Model.TotalProcesos;
+        b = (Model.TotalProcesosInactivos * 100) / Model.TotalProcesos;
+        c = (Model.TotalProcesosEliminados * 100) / Model.TotalProcesos;
+    }
+}
+<div class="card">
+    <div class="card-block">
+        <!-- Row -->
+        <h3><b>Cuenta: @Model.NombreCuenta</b> <span class="pull-right"># @Model.CuentaId</span></h3>
+        <hr />
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tabGeneral" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">Informacion General</span></a> </li>
+            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tabAuditoria" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">Auditoria Usuarios</span></a> </li>
+            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tabVJConnect" role="tab"><span class="hidden-sm-up"><i class="ti-arrow-circle-right"></i></span> <span class="hidden-xs-down">Movimientos VJ-Connect</span></a> </li>
+            <li class="nav-item"> <a id="tabLogErrores" class="nav-link" data-toggle="tab" href="#divLogErrores" role="tab"><span class="hidden-sm-up"><i class="ti-alert"></i></span> <span class="hidden-xs-down">Log Errores</span></a> </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content tabcontent-border">
+            <div class="tab-pane active" id="tabGeneral" role="tabpanel">
+                <div class="p-20">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card card-outline-info">
+                                <div class="card-header">
+                                    <h4 class="m-b-0 text-white">Información de la Cuenta</h4>
+                                </div>
+                                <div class="card-block">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="form-body">
+                                            <h3 class="box-title">Datos Básicos <span class="pull-right">@Html.ActionLink("Modificar", "Edit", new { id = @Model.CuentaId }) | @Html.ActionLink("Regresar", "Index")</span></h3>
+                                            <hr class="m-t-0 m-b-40">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Nombre de la Cuenta:</label>
+                                                        <div class="col-md-9">
+                                                            <p class="form-control-static">Cuenta: @Model.NombreCuenta</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Dirección:</label>
+                                                        <div class="col-md-9">
+                                                            <p class="form-control-static"> ---- </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                            </div>
+                                            <!--/row-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Ciudad:</label>
+                                                        <div class="col-md-9">
+                                                            <p class="form-control-static">-----</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Correo Electrónico:</label>
+                                                        <div class="col-md-9">
+                                                            <p class="form-control-static">------</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                            </div>
+                                            <!--/row-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Teléfono:</label>
+                                                        <div class="col-md-9">
+                                                            <p class="form-control-static">---------</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Fecha Vinculación:</label>
+                                                        <div class="col-md-9">
+                                                            <p class="form-control-static">-------</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                            </div>
+                                            <!--/row-->
+                                            <h3 class="box-title">Licencia</h3>
+                                            <hr class="m-t-0 m-b-40">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Contrato</label>
+                                                        <div class="col-md-9">
+                                                            <p class="form-control-static"> @Model.LicenciaInfo.TipoLicenciaNombre </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Fecha Vencimiento </label>
+                                                        <div class="col-md-9">
+                                                            <p class="form-control-static">@Model.FechaExpiracion</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Estado</label>
+                                                        <div class="col-md-9">
+                                                            <p class="form-control-static">@Model.Activo</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                            </div>
+                                            <!--/row-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">Maximo Usuarios</label>
+                                                        <div class="col-md-9">
+                                                            <p class="form-control-static">@Model.LicenciaInfo.MaximoUsuarios Usuarios</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="control-label text-right col-md-3">VJ-Connect</label>
+                                                        <div class="col-md-9">
+                                                            <p class="form-control-static">@Model.LicenciaInfo.VJConnectMaximoProcesos Vínculos</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--/span-->
+                                            </div>
+                                            <!--/row-->
+                                            <h3 class="box-title">Estadísticas</h3>
+                                            <hr class="m-t-0 m-b-40">
+                                            <div class="card-block">
+
+                                                <div class="row">
+
+                                                    <!-- Column -->
+                                                    <div class="col-md-6 col-lg-3">
+                                                        <div class="card card-block">
+                                                            <!-- Row -->
+                                                            <div class="row">
+                                                                <!-- Column -->
+                                                                <div class="col p-r-0 align-self-center">
+                                                                    <h2 class="font-light m-b-0">@Model.TotalProcesos</h2>
+                                                                    <h6 class="text-muted">Total Procesos</h6>
+                                                                </div>
+                                                                <!-- Column -->
+                                                                <div class="col text-right align-self-center">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Column -->
+                                                    <div class="col-md-6 col-lg-3">
+                                                        <div class="card card-block">
+                                                            <!-- Row -->
+                                                            <div class="row">
+                                                                <!-- Column -->
+                                                                <div class="col p-r-0 align-self-center">
+                                                                    <h2 class="font-light m-b-0">@Model.TotalProcesosActivos</h2>
+                                                                    <h6 class="text-muted">Procesos Activos</h6>
+                                                                </div>
+                                                                <!-- Column -->
+                                                                <div class="col text-right align-self-center">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Column -->
+                                                    <div class="col-md-6 col-lg-3">
+                                                        <div class="card card-block">
+                                                            <!-- Row -->
+                                                            <div class="row">
+                                                                <!-- Column -->
+                                                                <div class="col p-r-0 align-self-center">
+                                                                    <h2 class="font-light m-b-0">@Model.TotalProcesosInactivos</h2>
+                                                                    <h6 class="text-muted">Procesos Inactivos</h6>
+                                                                </div>
+                                                                <!-- Column -->
+                                                                <div class="col text-right ">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Column -->
+                                                    <div class="col-md-6 col-lg-3">
+                                                        <div class="card card-block">
+                                                            <!-- Row -->
+                                                            <div class="row">
+                                                                <!-- Column -->
+                                                                <div class="col p-r-0 align-self-center">
+                                                                    <h2 class="font-light m-b-0">@Model.TotalProcesosEliminados</h2>
+                                                                    <h6 class="text-muted">Procesos Eliminados</h6>
+                                                                </div>
+                                                                <!-- Column -->
+                                                                <div class="col text-right align-self-center">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Column -->
+                                                    <div class="col-md-6 col-lg-3">
+                                                        <div class="card card-block">
+                                                            <!-- Row -->
+                                                            <div class="row">
+                                                                <!-- Column -->
+                                                                <div class="col p-r-0 align-self-center">
+                                                                    <h2 class="font-light m-b-0">@Model.TotalProcesosConVJConnect</h2>
+                                                                    <h6 class="text-muted">Vínculos de VJ-Connect</h6>
+                                                                </div>
+                                                                <!-- Column -->
+                                                                <div class="col text-right align-self-center">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!--/row-->
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane  p-20" id="tabAuditoria" role="tabpanel">
+
+                <div class="card-block" id="Auditoria">
+                    <table class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                
+                            <tr>
+                                <th>
+                                    Fecha Hora
+                                </th>
+                                <th>
+                                    Usuario
+                                </th>
+                                <th>
+                                    Acción
+                                </th>
+                                <th>
+                                    Proceso
+                                </th>
+                                <th>
+                                    Dirección IP
+                                </th>
+                    
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model.AuditoriaUsuarios) {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaHoraString)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UsuarioId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Accion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Obligacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DireccionIp)
+                                </td>
+                    
+                    
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="tab-pane p-20" id="tabVJConnect" role="tabpanel">
+
+                        <div class="card-block" id="MovimientosBlock">
+                            <!--Ajax-->
+                        </div>
+            </div>
+            <div class="tab-pane p-20" id="divLogErrores" role="tabpanel">
+
+                <div class="card-block" id="LogErroresBlock">
+
+                    Tab Errores
+                    <!--Ajax-->
+                </div>
+            </div>
+                                    
+        </div>
+
+        
+        
+
+    </div>
+</div>
+
+<script>
+    $.ajax({
+        url: '@Url.Content("~/Clientes/MovimientosVJConnect/")@ViewBag.CuentaId',
+        type: 'POST',
+        context: document.body,
+        beforeSend: function () {
+            $('#msg').html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>');
+        },
+        success: function (response) {
+            $('#MovimientosBlock').html(response);
+        }
+    });
+
+
+    $("#tabLogErrores").click(function () {
+        $.ajax({
+        url: '@Url.Content("~/Clientes/HTTP500Errors/")@ViewBag.CuentaId',
+        type: 'POST',
+        context: document.body,
+        beforeSend: function () {
+            $('#msg').html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>');
+        },
+        success: function (response) {
+            $('#LogErroresBlock').html(response);
+        }
+    });
+    });
+
+    
+
+
+</script>
+
+

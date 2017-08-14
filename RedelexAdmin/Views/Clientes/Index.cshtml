@@ -1,0 +1,194 @@
+﻿
+
+@{
+    ViewBag.Title = "Clientes";
+}
+
+
+
+
+<style>
+    /* Ensure that the demo table scrolls */
+    th, td { white-space: nowrap; }
+    
+</style>
+<div class="card">
+     
+
+
+    <div class="card-block">
+
+
+        <div class="card">
+
+                            <div class="card-block">
+
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tabAnual" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">Licencia Pago Anual</span></a> </li>
+                                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tabMensual" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">Licencia Pago Mensual</span></a> </li>
+                                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tabGratuita" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Licencia Gratuita</span></a> </li>
+                                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tabDemostracion" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Demostracion</span></a> </li>
+                                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tabTodos" role="tab"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Todos</span></a> </li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content tabcontent-border">
+                                    <div class="tab-pane active" id="tabAnual" role="tabpanel">
+                                        <div class="p-20">
+                                            <div class="card-block" id="LicenciaPagoAnual">
+                                
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane  p-20" id="tabMensual" role="tabpanel">
+
+                                        <div class="card-block" id="LicenciaPagoMensual">
+                                
+                                        </div>
+
+                                    </div>
+                                    <div class="tab-pane p-20" id="tabGratuita" role="tabpanel">
+
+                                        <div class="card-block" id="LicenciaGratuita">
+                                
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane p-20" id="tabDemostracion" role="tabpanel">
+
+                                        <div class="card-block" id="LicenciaDemostracion">
+                                
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane p-20" id="tabTodos" role="tabpanel">
+
+                                        <div class="card-block" id="LicenciaTodos">
+                                
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                            </div>
+
+
+                            
+
+                            
+
+
+                            
+
+                            
+
+        </div>
+
+        
+
+
+
+
+        @*<span>Tipo Licencia: </span>@Html.DropDownList("ddlLicencias", Enumerable.Empty<SelectListItem>(), "-- Loading Values --", new { id = "ddlLicencias" }) 
+        <div id="resultado" class="table-responsive m-t-40 hscroll">
+            
+        </div>*@
+    </div>
+</div>
+
+    <script>    
+
+        //$(function () {
+        //    $.getJSON('/Clientes/Licencias', function (result) {
+        //        var ddl = $('#ddlLicencias');
+        //        ddl.empty();
+        //        $(result).each(function () {
+        //            $(document.createElement('option'))
+        //                .attr('value', this.Id)
+        //                .text(this.Value)
+        //                .appendTo(ddl);
+        //        });
+        //    });
+        //});
+
+        
+        
+
+        //$(function () {
+        //    $('#ddlLicencias').change(function () {
+        //        var page = $(this).val();
+        //        $.ajax({
+        //            url: '/Clientes/TablaClientes/' + page,
+        //            type: 'POST',
+        //            context: document.body,
+        //            beforeSend: function () {
+        //                $('#msg').html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>');
+        //            },
+        //            success: function (response) {
+        //                $('#resultado').html(response);
+        //            }
+        //        });
+        //    });
+        //});
+
+        $.ajax({
+                    url: "@Url.Content("~/Clientes/TablaClientes/4")",
+                    type: 'POST',
+                    context: document.body,
+                    beforeSend: function () {
+                        $('#msg').html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>');
+                    },
+                    success: function (response) {
+                        $('#LicenciaPagoMensual').html(response);
+                    }
+                });
+
+        $.ajax({
+            url: "@Url.Content("~/Clientes/TablaClientes/2")",
+            type: 'POST',
+            context: document.body,
+            beforeSend: function () {
+                $('#msg').html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>');
+            },
+            success: function (response) {
+                $('#LicenciaPagoAnual').html(response);
+            }
+        });
+
+        $.ajax({
+            url: "@Url.Content("~/Clientes/TablaClientes/1")",
+            type: 'POST',
+            context: document.body,
+            beforeSend: function () {
+                $('#msg').html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>');
+            },
+            success: function (response) {
+                $('#LicenciaDemostracion').html(response);
+            }
+        });
+
+        $.ajax({
+            url: "@Url.Content("~/Clientes/TablaClientes/3")",
+            type: 'POST',
+            context: document.body,
+            beforeSend: function () {
+                $('#msg').html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>');
+            },
+            success: function (response) {
+                $('#LicenciaGratuita').html(response);
+            }
+        });
+
+        $.ajax({
+            url: "@Url.Content("~/Clientes/TablaClientes")",
+            type: 'POST',
+            context: document.body,
+            beforeSend: function () {
+                $('#msg').html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>');
+            },
+            success: function (response) {
+                $('#LicenciaTodos').html(response);
+            }
+        });
+
+
+    </script>

@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "Redelex - Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="login-register" style="background-image:url(@Url.Content("~/Content/fotos/loginFormBackground.jpg"));">        
+            <div class="login-box card">
+            <div class="card-block">
+                <!-- Form -->
+                <div class="form-horizontal form-material" id="loginform" >
+                    <!--<h3 class="box-title m-b-20">Redelex - Login</h3>-->
+                    <!--<img src="@Url.Content("~/Content/logos/logoRedelexBlanco.png")" alt="Redelex" class="light-logo" />-->
+                    <div class="form-group text-center m-t-20">
+                        <div class="col-xs-12">
+                            <img src="@Url.Content("~/Content/logos/logoRedelexBlanco.png")" alt="Redelex" class="light-logo" />
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            <input id="userid" class="form-control" type="text" required="" placeholder="Usuario"> </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input id="password" class="form-control" type="password" required="" placeholder="Contraseña"> </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="checkbox checkbox-primary pull-left p-t-0">
+                                <input id="checkbox-signup" type="checkbox">
+                                <label for="checkbox-signup"> Recordarme </label>
+                            </div> <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Olvidó su contraseña?</a>
+
+                        </div>
+                    </div>
+                    <div class="form-group text-center m-t-20">
+                        <div class="col-xs-12">
+                            <button id="savedata" class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Ingresar</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="text-center" id="msg">&nbsp;</div>
+                    </div>
+                    <div class="form-group m-b-0">
+                        <div class="col-sm-12 text-center">
+                            <p>No tiene una cuenta? <a href="register.html" class="text-info m-l-5"><b>Regístrese</b></a></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form -->
+                <form class="form-horizontal" id="recoverform" action="/Account/Login">
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            <h3>Recuperar su contraseña</h3>
+                            <p class="text-muted">Ingrese su correo electrónico y las instrucciones le serán enviadas! </p>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="text" required="" placeholder="Email"> </div>
+                    </div>
+                    <div class="form-group text-center m-t-20">
+                        <div class="col-xs-12">
+                            <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+
+<script>
+    $(document).ready(function () {
+        $('#savedata').click(function () {
+            var data = {
+                "userid": $("#userid").val(),
+                "password": $("#password").val()
+            };
+            $.ajax({
+                url: "@Url.Content("~/Account/validateuser")",
+                type: "POST",
+                data: JSON.stringify(data),
+                dataType: "json",
+                contentType: "application/json",
+                beforeSend: function() {
+                    $('#msg').html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>');
+                },
+                success: function (response) {
+                    if (response.Success) {
+
+                        //window.location.href = "@Request["TargetURL"]";
+                        window.location.href = "@Url.Content("~/Home")";
+
+                    }
+                    else
+                        $('#msg').html('<div class="alert alert-danger"> <i class="ti-user"></i> Inicio de sesión Inválido.<button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button></div>');
+                },
+                error: function () {
+                    console.log('Login Fail!!!');
+                }
+            });
+        });
+    });
+
+    $('#password').keypress(function (e) {
+        if (e.which == 13) {
+            jQuery(this).blur();
+            jQuery('#savedata').focus().click();
+            return false;
+        }
+    });
+</script>

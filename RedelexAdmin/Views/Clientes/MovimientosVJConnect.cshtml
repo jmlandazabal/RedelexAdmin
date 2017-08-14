@@ -1,0 +1,61 @@
+﻿@model RedelexDTO.Estadisticas
+
+@{
+    Layout = null;
+    
+}
+
+<h4 class="card-title">Reporte de Movimientos</h4>
+        <h6 class="card-subtitle">Ultimos 30 días</h6>
+        <div class="table-responsive m-t-40">
+            <div class="dataTables_wrapper no-footer">
+                                        
+            
+
+
+               <table id="MovimientosVJConnect" class="table display table-bordered table-striped data-table" cellspacing="0" width="100%">
+        
+                    <thead>
+                
+                        <tr>
+                            <th>
+                                Fecha
+                            </th>
+                            <th>
+                                Dia
+                            </th>
+                            <th>
+                                Total Movimientos
+                            </th>
+                    
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach (var item in Model.Estadistica) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaString)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaDiaSemanaString)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Total)
+                            </td>
+                    
+                        </tr>
+                    }
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+<script>
+    $('#MovimientosVJConnect').DataTable({
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        "pageLength": 50
+    });
+</script>

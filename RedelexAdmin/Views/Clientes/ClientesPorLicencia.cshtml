@@ -1,0 +1,65 @@
+﻿@model IEnumerable<RedelexAdmin.Models.clientes>
+
+@{
+    ViewBag.Title = "Clientes";
+}
+
+
+
+
+
+<style>
+    /* Ensure that the demo table scrolls */
+    th, td { white-space: nowrap; }
+    
+</style>
+<div class="card">
+    
+    
+    
+    
+     
+    <div class="card-block">
+        
+        @Html.DropDownList("ddlLicencias", Enumerable.Empty<SelectListItem>(), "-- Loading Values --", new { id = "ddlLicencias" }) 
+
+
+        <div class="table-responsive m-t-40 hscroll" id ="resultado">
+        
+        </div>
+    </div>
+</div>
+
+    <script>    
+        //$('._select_change').change(function () { $.post('/Clientes/ClientesPorLicencia/' + this.options[this.selectedIndex].value); })
+        //$('._select_change').change(function () { $.post('/Clientes/ClientesPorLicencia/' + this.selectedIndex); })
+
+        $(function () {
+            $.getJSON('/Clientes/Licencias', function (result) {
+                var ddl = $('#ddlLicencias');
+                ddl.empty();
+                $(result).each(function () {
+                    $(document.createElement('option'))
+                        .attr('value', this.Id)
+                        .text(this.Value)
+                        .appendTo(ddl);
+                });
+            });
+        });
+
+        
+        $(function () {
+            $('#ddlLicencias').change(function () {
+                var page = $(this).val();
+                $.ajax({
+                    url: '/Clientes/TablaClientes/' + page,
+                    type: 'POST',
+                    context: document.body,
+                success: function (response) {
+                    $('#resultado').html(response);
+                    }
+                });
+            });
+        });
+        
+    </script>

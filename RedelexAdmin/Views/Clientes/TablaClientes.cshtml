@@ -1,0 +1,97 @@
+﻿@model List<RedelexDTO.ClienteDetalleInfo>
+
+@{
+    Layout = null;
+ }
+
+
+
+        <h4 class="card-title">Licencia: @ViewBag.TipoLicencia</h4>
+        <h6 class="card-subtitle">Cuentas Activas</h6>
+        <div class="table-responsive m-t-40">
+            <div class="dataTables_wrapper no-footer">
+                                        
+            
+
+
+               <table id="Licencia-@ViewBag.TipoLicenciaId" class="table display table-bordered table-striped data-table" cellspacing="0" width="100%">
+        
+                    <thead>
+                
+                        <tr>
+                            <th>
+                                Cuenta ID
+                            </th>
+                            <th>
+                                Nombre
+                        
+                            </th>
+                            <th>
+                                Fecha Expiracion
+                            </th>
+                            <th>
+                                Usuarios
+                            </th>
+                            <th>
+                                Procesos
+                            </th>
+                            <th>
+                                VJConnect
+                            </th>
+                            <th>
+                                Gigas
+                            </th>
+                            <th></th>
+
+                    
+                    
+                    
+                    
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach (var item in Model) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CuentaId)
+                            </td>
+                            <td>
+                                @Html.ActionLink(item.NombreCuenta, "InfoCliente", new { id=item.CuentaId })
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LicenciaInfo.FechaExpiracionString)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LicenciaInfo.MaximoUsuarios)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LicenciaInfo.MaximoProcesos)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LicenciaInfo.VJConnectMaximoProcesos)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LicenciaInfo.MaximoEspacioDisco)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Modificar", "Edit", new { id=item.CuentaId })
+                            </td>
+                    
+                    
+                        </tr>
+                    }
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+<script>
+    $('#Licencia-@ViewBag.TipoLicenciaId').DataTable({
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        "pageLength": 50,
+        "aaSorting": []
+    });
+</script>
